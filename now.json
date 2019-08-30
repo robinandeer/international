@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "env": {
+    "GITHUB_API_TOKEN": "@github-token"
+  }
+}
