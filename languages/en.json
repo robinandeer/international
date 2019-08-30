@@ -3,5 +3,6 @@
     "welcomeLabel": "Welcome",
     "welcomeDescription": "Sign in to manage your cards and see your transactions.",
     "signInButton": "Sign in"
-  }
+  },
+  "welcomeLabel": "Welcome to First Card"
 }
