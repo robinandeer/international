@@ -3,5 +3,9 @@
     "welcomeLabel": "Welcome",
     "welcomeDescription": "Sign in to manage your cards and see your transactions.",
     "signInButton": "Sign in"
+  },
+  "cards": {
+    "screenTitle": "Cards",
+    "blockButton": "Block card"
   }
 }

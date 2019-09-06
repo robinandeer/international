@@ -3,5 +3,9 @@
     "welcomeLabel": "Välkommen",
     "welcomeDescription": "Logga in för att hantera dina kort se din köp.",
     "signInButton": "Logga in"
+  },
+  "cards": {
+    "screenTitle": "",
+    "blockButton": ""
   }
 }

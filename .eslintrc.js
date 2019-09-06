@@ -3,13 +3,12 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   extends: [
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
   rules: {
-    // note you must disable the base rule as it can report incorrect errors
-    indent: "off",
-    "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
@@ -17,8 +16,5 @@ module.exports = {
       }
     ],
     "react/prop-types": "off",
-    // note you must disable the base rule as it can report incorrect errors
-    semi: "off",
-    "@typescript-eslint/semi": ["error", "never"]
   }
 };
