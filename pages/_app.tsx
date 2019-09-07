@@ -10,24 +10,18 @@ const theme = {
       background: "#131227",
       "accent-1": "#A17D7C",
       placeholder: "#757576",
-      "elevation-1": "#1F192B",
+      "elevation-1": "rgba(255, 255, 255, 0.05)",
     },
     font: {
       family: "Roboto",
       size: "16px",
     },
   },
-  tab: {
-    color: "placeholder",
-    active: {
-      background: "accent-1",
-      color: "white",
-      borderRadius: "8px",
+  button: {
+    color: "white",
+    extend: {
+      fontWeight: "bold",
     },
-    border: {
-      size: "0",
-    },
-    pad: { horizontal: "small" },
   },
 }
 

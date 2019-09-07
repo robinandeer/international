@@ -12,11 +12,25 @@ import {
 import MainContext from "../../../contexts/main"
 
 const TranslationList: React.FC = () => {
-  const { translation, data, setData, screen } = useContext(MainContext)
+  const {
+    translation,
+    data,
+    setData,
+    screen,
+    refTranslation,
+    refLanguage,
+    language,
+  } = useContext(MainContext)
 
-  if (translation && data && screen) {
+  if (translation && data && screen && refTranslation) {
     return (
-      <Table style={{ width: "100%", background: "#1F192B", borderRadius: 24 }}>
+      <Table
+        style={{
+          width: "100%",
+          background: "rgba(255, 255, 255, 0.05)",
+          borderRadius: 24,
+        }}
+      >
         <TableBody>
           {Object.entries(translation.language[screen]).map(([key, value]) => (
             <TableRow
@@ -34,6 +48,15 @@ const TranslationList: React.FC = () => {
               </TableCell>
               <TableCell>
                 <Box fill pad={{ vertical: "xsmall" }}>
+                  {language !== refLanguage && (
+                    <Text
+                      size="small"
+                      color="placeholder"
+                      margin={{ bottom: "xxsmall" }}
+                    >
+                      {refTranslation.language[screen][key]}
+                    </Text>
+                  )}
                   <TextInput
                     style={{ width: "100%" }}
                     value={data[screen][key]}
@@ -50,8 +73,9 @@ const TranslationList: React.FC = () => {
                   {data[screen][key] !== value && (
                     <Text
                       size="small"
-                      color="gray"
+                      color="placeholder"
                       style={{ textDecoration: "line-through" }}
+                      margin={{ top: "xxsmall" }}
                     >
                       {value}
                     </Text>

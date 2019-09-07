@@ -1,14 +1,15 @@
 import React, { useContext, useCallback, useState, useEffect } from "react"
-import { Box, Tabs, Tab } from "grommet"
+import { Box, Button } from "grommet"
 
 import MainContext from "../../../contexts/main"
 import TranslationList from "./translation-list"
+import SaveButton from "./save-button"
 
 const ScreenTranslations: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const { languages, language, setLanguage } = useContext(MainContext)
 
-  const handleActive = useCallback(
+  const handleClickLanguage = useCallback(
     (index: number): void => {
       const selectedLanguage = languages[index]
       setLanguage(selectedLanguage)
@@ -25,12 +26,25 @@ const ScreenTranslations: React.FC = () => {
 
   return (
     <Box align="start">
-      <Box margin={{ bottom: "small" }}>
-        <Tabs onActive={handleActive} activeIndex={activeIndex}>
-          {languages.map(languageCode => (
-            <Tab key={languageCode} title={languageCode} />
+      <Box
+        width="100%"
+        direction="row"
+        align="center"
+        justify="between"
+        margin={{ bottom: "small" }}
+      >
+        <Box direction="row" align="center">
+          {languages.map((languageCode, index) => (
+            <Button
+              primary={index === activeIndex}
+              key={languageCode}
+              label={languageCode}
+              onClick={(): void => handleClickLanguage(index)}
+              margin={{ right: "small" }}
+            />
           ))}
-        </Tabs>
+        </Box>
+        <SaveButton />
       </Box>
       <TranslationList />
     </Box>

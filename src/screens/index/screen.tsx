@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useContext } from "react"
+import React, { useEffect, useCallback, useContext } from "react"
 import { NextPage } from "next"
 import { Box, Grid } from "grommet"
 
@@ -23,26 +23,12 @@ const fetchTranslation = async (
   return data as TranslationApiResponse
 }
 
-const updateTranslation = async (
-  languageCode: string,
-  branchName: string,
-  languageData: object
-): Promise<TranslationApiResponse> => {
-  const url = `/api/languages/${languageCode}?branch=${branchName}`
-  const response = await fetch(url, {
-    method: "PUT",
-    body: JSON.stringify(languageData),
-  })
-  const data = (await response.json()) as TranslationApiResponse
-  return data
-}
-
 const IndexScreen: NextPage = () => {
   const {
     language,
     branch,
-    data,
     screen,
+    refLanguage,
     setTranslation,
     setData,
     setLanguages,
@@ -50,8 +36,8 @@ const IndexScreen: NextPage = () => {
     setBranches,
     setBranch,
     setScreen,
+    setRefTranslation,
   } = useContext(MainContext)
-  const [saving, setSaving] = useState<boolean>(false)
 
   const fetchLanguage = useCallback(async (): Promise<void> => {
     const translation = await fetchTranslation(language, branch)
@@ -67,6 +53,17 @@ const IndexScreen: NextPage = () => {
       fetchLanguage()
     }
   }, [language, branch])
+
+  const fetchRefTranslation = useCallback(async (): Promise<void> => {
+    const translation = await fetchTranslation(refLanguage, branch)
+    setRefTranslation(translation)
+  }, [branch, refLanguage])
+
+  React.useEffect(() => {
+    if (branch) {
+      fetchRefTranslation()
+    }
+  }, [branch, fetchRefTranslation])
 
   const fetchLanguages = React.useCallback(async () => {
     const response = await fetch("/api/languages")
@@ -91,17 +88,6 @@ const IndexScreen: NextPage = () => {
   React.useEffect(() => {
     fetchBranches()
   }, [])
-
-  const updateLanguage = useCallback(async (): Promise<void> => {
-    setSaving(true)
-    const newData = await updateTranslation(language, branch, data)
-    setTranslation(newData)
-    setSaving(false)
-  }, [language, branch, data])
-
-  const handleSubmitLanguage = useCallback(() => {
-    updateLanguage()
-  }, [language, branch, data])
 
   return (
     <Grid
