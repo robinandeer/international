@@ -2,15 +2,16 @@ import React, { useEffect, useState, useCallback, useContext } from "react"
 import { NextPage } from "next"
 import { Box, Grid } from "grommet"
 
-import MainContext from "../../contexts/main"
-import ScreenList from "./components/screen-list"
-import Header from "./components/header"
-import ScreenTranslations from "./components/screen-translations"
 import {
   TranslationApiResponse,
   LanguagesApiResponse,
   BranchesApiResponse,
 } from "../../types"
+import MainContext from "../../contexts/main"
+import ScreenList from "./components/screen-list"
+import Header from "./components/header"
+import ScreenTranslations from "./components/screen-translations"
+import Screenshots from "./components/screenshots"
 
 const fetchTranslation = async (
   languageCode: string,
@@ -82,7 +83,9 @@ const IndexScreen: NextPage = () => {
     const response = await fetch("/api/branches")
     const data = (await response.json()) as BranchesApiResponse
     setBranches(data.branches.map(branch => branch.name))
-    setBranch(data.branches[0].name)
+    if (data.branches.length > 0) {
+      setBranch(data.branches[0].name)
+    }
   }, [])
 
   React.useEffect(() => {
@@ -111,19 +114,18 @@ const IndexScreen: NextPage = () => {
         { name: "main", start: [1, 1], end: [1, 1] },
       ]}
     >
-      <Box gridArea="header" background="brand">
+      <Box gridArea="header">
         <Header />
       </Box>
-      <Box
-        gridArea="nav"
-        border={{ color: "light-2", size: "small", side: "right" }}
-      >
+      <Box gridArea="nav">
         <ScreenList />
       </Box>
       <Box gridArea="main">
         <Grid fill rows={["1/2", "1/2"]}>
-          <Box border={{ color: "light-2", size: "small", side: "bottom" }} />
-          <Box>
+          <Box pad="small">
+            <Screenshots />
+          </Box>
+          <Box pad="small">
             <ScreenTranslations />
           </Box>
         </Grid>

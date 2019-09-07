@@ -7,13 +7,27 @@ import { MainProvider } from "../src/contexts/main"
 const theme = {
   global: {
     colors: {
-      brand: "#228BE6",
+      background: "#131227",
+      "accent-1": "#A17D7C",
+      placeholder: "#757576",
+      "elevation-1": "#1F192B",
     },
     font: {
       family: "Roboto",
-      size: "14px",
-      height: "20px",
+      size: "16px",
     },
+  },
+  tab: {
+    color: "placeholder",
+    active: {
+      background: "accent-1",
+      color: "white",
+      borderRadius: "8px",
+    },
+    border: {
+      size: "0",
+    },
+    pad: { horizontal: "small" },
   },
 }
 

@@ -1,6 +1,6 @@
 import Octokit from "@octokit/rest"
 
-import { LanguageCode } from "../../src/types"
+import { LanguageCode, Screenshot } from "../../src/types"
 
 const OWNER = "robinandeer"
 const REPO_NAME = "international"
@@ -51,6 +51,18 @@ export const createBranch = async (
   })
 
   return data
+}
+
+export const getLanguages = async (): Promise<string[]> => {
+  const filePath = "languages/"
+  const { data: languagesDir } = await octokit.repos.getContents({
+    owner: OWNER,
+    repo: REPO_NAME,
+    path: filePath,
+  })
+
+  const languages = languagesDir.map(item => item.name.replace(".json", ""))
+  return languages
 }
 
 export const getLanguage = async (
@@ -111,4 +123,25 @@ export const createPullRequest = async (
   })
 
   return data
+}
+
+export const listScreenshots = async (
+  screen: string
+): Promise<Screenshot[]> => {
+  try {
+    const filePath = `screenshots/${screen}`
+    const { data: screenshotDir } = await octokit.repos.getContents({
+      owner: OWNER,
+      repo: REPO_NAME,
+      path: filePath,
+    })
+
+    const screenshots = screenshotDir.map(item => ({
+      name: item.name,
+      url: item.download_url,
+    }))
+    return screenshots
+  } catch {
+    return []
+  }
 }

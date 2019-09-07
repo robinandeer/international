@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Box, Text } from "grommet"
+import { Box, Text, Button } from "grommet"
 
 import MainContext from "../../../contexts/main"
 
@@ -8,16 +8,22 @@ const ListItem: React.FC<{ title: string; selected: boolean }> = ({
   selected,
 }) => (
   <Box
-    pad="small"
-    background={selected ? "brand" : null}
-    style={{ borderRadius: 16 }}
+    pad={{ horizontal: "small", vertical: "xsmall" }}
+    background={selected ? "accent-1" : null}
+    style={{ borderRadius: 40 }}
   >
-    <Text weight={selected ? "bold" : "normal"}>{title}</Text>
+    <Text
+      size="small"
+      color={selected ? "white" : "placeholder"}
+      weight={selected ? "bold" : "normal"}
+    >
+      {title}
+    </Text>
   </Box>
 )
 
 const ScreenList: React.FC = () => {
-  const { translation, screen } = useContext(MainContext)
+  const { translation, screen, setScreen } = useContext(MainContext)
 
   let appScreens
   if (translation) {
@@ -29,11 +35,9 @@ const ScreenList: React.FC = () => {
   return (
     <Box fill pad="xsmall">
       {appScreens.map(appScreen => (
-        <ListItem
-          key={appScreen}
-          title={appScreen}
-          selected={screen === appScreen}
-        />
+        <Button key={appScreen} onClick={(): void => setScreen(appScreen)}>
+          <ListItem title={appScreen} selected={screen === appScreen} />
+        </Button>
       ))}
     </Box>
   )

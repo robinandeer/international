@@ -1,13 +1,14 @@
 import { NowRequest, NowResponse } from "@now/node"
 
-import { LanguageCode } from "../../../src/types"
+import { getLanguages } from "../../../src/lib/github"
 import cors from "../../../src/cors"
 
 const getRequest = async (
   _req: NowRequest,
   res: NowResponse
 ): Promise<void> => {
-  res.json({ languages: [LanguageCode.en, LanguageCode.sv] })
+  const languages = await getLanguages()
+  res.json({ languages })
 }
 
 const route = async (req: NowRequest, res: NowResponse): Promise<void> => {

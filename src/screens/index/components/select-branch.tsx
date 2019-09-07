@@ -23,7 +23,7 @@ const SelectBranch: React.FC = () => {
   return (
     <>
       <Menu
-        label={branches.length > 0 ? branch : "Loading..."}
+        label={branches.length > 0 ? branch : "Select branch..."}
         items={[
           ...branches.map(branchName => ({
             label: branchName,

@@ -12,10 +12,7 @@ const Header: React.FC = () => {
       align="center"
       pad={{ horizontal: "medium" }}
     >
-      <Text size="medium" weight="bold">
-        Internationalization
-      </Text>
-
+      <Text size="medium">Internationalization</Text>
       <SelectBranch />
     </Box>
   )

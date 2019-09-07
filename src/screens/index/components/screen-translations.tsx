@@ -24,12 +24,14 @@ const ScreenTranslations: React.FC = () => {
   }, [language])
 
   return (
-    <Box align="start" pad="small">
-      <Tabs onActive={handleActive} activeIndex={activeIndex}>
-        {languages.map(languageCode => (
-          <Tab key={languageCode} title={languageCode}></Tab>
-        ))}
-      </Tabs>
+    <Box align="start">
+      <Box margin={{ bottom: "small" }}>
+        <Tabs onActive={handleActive} activeIndex={activeIndex}>
+          {languages.map(languageCode => (
+            <Tab key={languageCode} title={languageCode} />
+          ))}
+        </Tabs>
+      </Box>
       <TranslationList />
     </Box>
   )
