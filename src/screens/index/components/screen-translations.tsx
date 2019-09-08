@@ -14,7 +14,7 @@ const ScreenTranslations: React.FC = () => {
       const selectedLanguage = languages[index]
       setLanguage(selectedLanguage)
     },
-    [language]
+    [languages, setLanguage]
   )
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const ScreenTranslations: React.FC = () => {
       languageCode => languageCode === language
     )
     setActiveIndex(newActiveIndex === -1 ? 0 : newActiveIndex)
-  }, [language])
+  }, [language, languages, setActiveIndex])
 
   return (
     <Box align="start">
