@@ -9,7 +9,7 @@ const updateTranslation = async (
   branchName: string,
   languageData: object
 ): Promise<TranslationApiResponse> => {
-  const url = `/api/languages/${languageCode}?branch=${branchName}`
+  const url = `/api/translations/${languageCode}?branch=${branchName}`
   const response = await fetch(url, {
     method: "PUT",
     body: JSON.stringify(languageData),

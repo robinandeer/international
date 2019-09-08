@@ -1,7 +1,7 @@
 import { NowRequest, NowResponse } from "@now/node"
 
-import cors from "../../../src/cors"
-import { createBranch, listBranches } from "../../../src/lib/github"
+import cors from "../../src/cors"
+import { createBranch, listBranches } from "../../src/lib/github"
 
 const getRequest = async (
   _req: NowRequest,

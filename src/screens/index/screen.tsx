@@ -17,7 +17,7 @@ const fetchTranslation = async (
   languageCode: string,
   branchName: string
 ): Promise<TranslationApiResponse> => {
-  const url = `/api/languages/${languageCode}?branch=${branchName}`
+  const url = `/api/translations/${languageCode}?branch=${branchName}`
   const response = await fetch(url)
   const data = await response.json()
   return data as TranslationApiResponse

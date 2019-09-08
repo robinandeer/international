@@ -1,7 +1,7 @@
 import { NowRequest, NowResponse } from "@now/node"
 
-import { getLanguages } from "../../../src/lib/github"
-import cors from "../../../src/cors"
+import { getLanguages } from "../../src/lib/github"
+import cors from "../../src/cors"
 
 const getRequest = async (
   _req: NowRequest,

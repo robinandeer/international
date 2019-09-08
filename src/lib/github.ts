@@ -54,14 +54,14 @@ export const createBranch = async (
 }
 
 export const getLanguages = async (): Promise<string[]> => {
-  const filePath = "languages/"
-  const { data: languagesDir } = await octokit.repos.getContents({
+  const filePath = "translations/"
+  const { data: translationsDir } = await octokit.repos.getContents({
     owner: OWNER,
     repo: REPO_NAME,
     path: filePath,
   })
 
-  const languages = languagesDir.map(item => item.name.replace(".json", ""))
+  const languages = translationsDir.map(item => item.name.replace(".json", ""))
   return languages
 }
 
@@ -69,7 +69,7 @@ export const getLanguage = async (
   languageCode: LanguageCode,
   branchName: string
 ): Promise<object> => {
-  const filePath = `languages/${languageCode}.json`
+  const filePath = `translations/${languageCode}.json`
   const { data: languageFile } = await octokit.repos.getContents({
     owner: OWNER,
     repo: REPO_NAME,
@@ -89,7 +89,7 @@ export const updateLanguage = async (
   branchName: string,
   updatedData: object
 ): Promise<Octokit.ReposCreateOrUpdateFileResponse> => {
-  const filePath = `languages/${languageCode}.json`
+  const filePath = `translations/${languageCode}.json`
   const { data: languageFile } = await octokit.repos.getContents({
     owner: OWNER,
     repo: REPO_NAME,
