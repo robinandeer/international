@@ -1,12 +1,14 @@
-import { LanguageCode } from "./types"
+import { LanguageCode } from "./types";
 
-export async function getLanguage(code: LanguageCode): Promise<object | null> {
+export async function getLocalTranslation(
+  code: LanguageCode
+): Promise<object | null> {
   try {
     const data: { default: object } = await import(
       `../translations/${code}.json`
-    )
-    return data.default
+    );
+    return data.default;
   } catch (error) {
-    return null
+    return null;
   }
 }

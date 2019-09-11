@@ -1,9 +1,12 @@
-import React from "react"
-import { Box, Text } from "grommet"
+import React from "react";
+import { useSelector } from "react-redux";
+import { Box, Text } from "grommet";
 
-import SelectBranch from "./select-branch"
+import { selectEmail } from "../../../redux/selectors";
 
 const Header: React.FC = () => {
+  const email = useSelector(selectEmail);
+
   return (
     <Box
       fill
@@ -13,9 +16,9 @@ const Header: React.FC = () => {
       pad={{ horizontal: "medium" }}
     >
       <Text size="medium">Internationalization</Text>
-      <SelectBranch />
+      <Text size="medium">{email}</Text>
     </Box>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -1,17 +1,17 @@
 export interface TranslationApiResponse {
-  language: object
+  language: object;
 }
 
 export interface LanguagesApiResponse {
-  languages: string[]
+  languages: string[];
 }
 
 export interface BranchItem {
-  name: string
+  name: string;
 }
 
 export interface BranchesApiResponse {
-  branches: BranchItem[]
+  branches: BranchItem[];
 }
 
 export interface Screenshot {

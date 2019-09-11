@@ -10,8 +10,9 @@ module.exports = {
   ],
   rules: {
     "@typescript-eslint/explicit-function-return-type": [
-      "error",
+      "warn",
       {
+        allowExpressions: true,
         allowTypedFunctionExpressions: true
       }
     ],

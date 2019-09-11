@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { TranslationApiResponse } from "../types"
+import React, { useState } from "react";
+import { TranslationApiResponse } from "../types";
 
 const initialState = {
   language: "en",
@@ -11,6 +11,7 @@ const initialState = {
   screen: null,
   refLanguage: "en",
   refTranslation: null,
+  email: "",
   setLanguage: (value: string): void => {},
   setBranch: (value: string): void => {},
   setTranslation: (value: TranslationApiResponse): void => {},
@@ -19,29 +20,34 @@ const initialState = {
   setBranches: (value: string[]): void => {},
   setScreen: (value: string): void => {},
   setRefTranslation: (value: TranslationApiResponse): void => {},
-}
+  setEmail: (value: string): void => {},
+};
 
-const MainContext = React.createContext(initialState)
+const MainContext = React.createContext(initialState);
 
 export const MainProvider: React.FC = ({ children }) => {
-  const [language, setLanguage] = useState<string | null>(initialState.language)
-  const [branch, setBranch] = useState<string | null>(initialState.branch)
+  const [language, setLanguage] = useState<string | null>(
+    initialState.language
+  );
+  const [branch, setBranch] = useState<string | null>(initialState.branch);
 
   const [translation, setTranslation] = useState<TranslationApiResponse | null>(
     initialState.translation
-  )
-  const [data, setData] = useState<object | null>(initialState.data)
+  );
+  const [data, setData] = useState<object | null>(initialState.data);
   const [
     refTranslation,
     setRefTranslation,
-  ] = useState<TranslationApiResponse | null>(initialState.refTranslation)
+  ] = useState<TranslationApiResponse | null>(initialState.refTranslation);
 
-  const [languages, setLanguages] = useState<string[]>(initialState.languages)
-  const [branches, setBranches] = useState<string[]>(initialState.branches)
+  const [languages, setLanguages] = useState<string[]>(initialState.languages);
+  const [branches, setBranches] = useState<string[]>(initialState.branches);
 
-  const [screen, setScreen] = useState<string | null>(initialState.branch)
+  const [screen, setScreen] = useState<string | null>(initialState.branch);
 
-  const [refLanguage] = useState<string>(initialState.refLanguage)
+  const [refLanguage] = useState<string>(initialState.refLanguage);
+
+  const [email, setEmail] = useState<string>(initialState.email);
 
   return (
     <MainContext.Provider
@@ -55,6 +61,7 @@ export const MainProvider: React.FC = ({ children }) => {
         screen,
         refTranslation,
         refLanguage,
+        email,
         setTranslation,
         setData,
         setLanguage,
@@ -63,11 +70,12 @@ export const MainProvider: React.FC = ({ children }) => {
         setBranches,
         setScreen,
         setRefTranslation,
+        setEmail,
       }}
     >
       {children}
     </MainContext.Provider>
-  )
-}
+  );
+};
 
-export default MainContext
+export default MainContext;

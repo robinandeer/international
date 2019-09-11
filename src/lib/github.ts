@@ -1,22 +1,22 @@
-import Octokit from "@octokit/rest"
+import Octokit from "@octokit/rest";
 
-import { LanguageCode, Screenshot } from "../../src/types"
+import { LanguageCode, Screenshot } from "../../src/types";
 
-const OWNER = "robinandeer"
-const REPO_NAME = "international"
-const BASE_BRANCH_NAME = "master"
+const OWNER = "robinandeer";
+const REPO_NAME = "international";
+const BASE_BRANCH_NAME = "master";
 
-const octokit = new Octokit({ auth: process.env.GITHUB_API_TOKEN })
+const octokit = new Octokit({ auth: process.env.GITHUB_API_TOKEN });
 
 const getBaseBranch = async (): Promise<Octokit.ReposGetBranchResponse> => {
   const { data } = await octokit.repos.getBranch({
     owner: OWNER,
     repo: REPO_NAME,
     branch: BASE_BRANCH_NAME,
-  })
+  });
 
-  return data
-}
+  return data;
+};
 
 export const listBranches = async (): Promise<
   Octokit.ReposListBranchesResponseItem[]
@@ -24,23 +24,35 @@ export const listBranches = async (): Promise<
   const { data } = await octokit.repos.listBranches({
     owner: OWNER,
     repo: REPO_NAME,
-  })
+  });
 
-  return data
-}
+  return data;
+};
+
+export const fetchBranch = async (
+  branch: string
+): Promise<Octokit.ReposGetBranchResponse> => {
+  const { data } = await octokit.repos.getBranch({
+    owner: OWNER,
+    repo: REPO_NAME,
+    branch,
+  });
+
+  return data;
+};
 
 export const createBranch = async (
   name?: string
 ): Promise<Octokit.GitCreateRefResponse> => {
-  console.log(name)
-  const baseBranch = await getBaseBranch()
+  console.log(name);
+  const baseBranch = await getBaseBranch();
 
-  let branchName
+  let branchName;
   if (!name) {
-    const uniqueId = new Date().getTime().toString(36)
-    branchName = `branch-${uniqueId}`
+    const uniqueId = new Date().getTime().toString(36);
+    branchName = `branch-${uniqueId}`;
   } else {
-    branchName = name
+    branchName = name;
   }
 
   const { data } = await octokit.git.createRef({
@@ -48,68 +60,67 @@ export const createBranch = async (
     repo: REPO_NAME,
     ref: `refs/heads/${branchName}`,
     sha: baseBranch.commit.sha,
-  })
+  });
 
-  return data
-}
+  return data;
+};
 
-export const getLanguages = async (): Promise<string[]> => {
-  const filePath = "translations/"
+export const getLanguageCodes = async (): Promise<string[]> => {
+  const filePath = "translations/";
   const { data: translationsDir } = await octokit.repos.getContents({
     owner: OWNER,
     repo: REPO_NAME,
     path: filePath,
-  })
+  });
 
-  const languages = translationsDir.map(item => item.name.replace(".json", ""))
-  return languages
-}
+  const languages = translationsDir.map(item => item.name.replace(".json", ""));
+  return languages;
+};
 
-export const getLanguage = async (
+export const getTranslation = async (
   languageCode: LanguageCode,
   branchName: string
 ): Promise<object> => {
-  const filePath = `translations/${languageCode}.json`
-  const { data: languageFile } = await octokit.repos.getContents({
+  const filePath = `translations/${languageCode}.json`;
+  const { data: translationFile } = await octokit.repos.getContents({
     owner: OWNER,
     repo: REPO_NAME,
     ref: branchName,
     path: filePath,
-  })
+  });
 
-  const buffer = Buffer.from(languageFile.content, languageFile.encoding)
-  const languageString = buffer.toString()
-  const languageData = JSON.parse(languageString)
+  const buffer = Buffer.from(translationFile.content, translationFile.encoding);
+  const translationString = buffer.toString();
+  const translationData = JSON.parse(translationString);
+  return translationData;
+};
 
-  return languageData
-}
-
-export const updateLanguage = async (
+export const updateTranslation = async (
   languageCode: LanguageCode,
   branchName: string,
   updatedData: object
 ): Promise<Octokit.ReposCreateOrUpdateFileResponse> => {
-  const filePath = `translations/${languageCode}.json`
-  const { data: languageFile } = await octokit.repos.getContents({
+  const filePath = `translations/${languageCode}.json`;
+  const { data: translationFile } = await octokit.repos.getContents({
     owner: OWNER,
     repo: REPO_NAME,
     ref: branchName,
     path: filePath,
-  })
+  });
 
-  const stringContent = JSON.stringify(updatedData, null, 2)
+  const stringContent = JSON.stringify(updatedData, null, 2);
   const { data } = await octokit.repos.createOrUpdateFile({
     owner: OWNER,
     repo: REPO_NAME,
     path: filePath,
     branch: branchName,
-    sha: languageFile.sha,
+    sha: translationFile.sha,
     message: `Update ${languageCode} translations`,
     content: Buffer.from(stringContent).toString("base64"),
-  })
+  });
 
-  return data
-}
+  return data;
+};
 
 export const createPullRequest = async (
   branchName: string
@@ -120,28 +131,28 @@ export const createPullRequest = async (
     title: "Update translations",
     head: branchName,
     base: BASE_BRANCH_NAME,
-  })
+  });
 
-  return data
-}
+  return data;
+};
 
 export const listScreenshots = async (
   screen: string
 ): Promise<Screenshot[]> => {
   try {
-    const filePath = `screenshots/${screen}`
+    const filePath = `screenshots/${screen}`;
     const { data: screenshotDir } = await octokit.repos.getContents({
       owner: OWNER,
       repo: REPO_NAME,
       path: filePath,
-    })
+    });
 
     const screenshots = screenshotDir.map(item => ({
       name: item.name,
       url: item.download_url,
-    }))
-    return screenshots
+    }));
+    return screenshots;
   } catch {
-    return []
+    return [];
   }
-}
+};

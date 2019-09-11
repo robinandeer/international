@@ -1,8 +1,11 @@
 import App from "next/app"
 import React from "react"
+import { Provider } from "react-redux"
 import { Grommet } from "grommet"
 
 import { MainProvider } from "../src/contexts/main"
+import CheckAuth from "../src/components/check-auth"
+import store from "../src/redux/store"
 
 const theme = {
   global: {
@@ -29,11 +32,15 @@ class MyApp extends App {
   public render() {
     const { Component, pageProps } = this.props
     return (
-      <MainProvider>
-        <Grommet theme={theme} full>
-          <Component {...pageProps} />
-        </Grommet>
-      </MainProvider>
+      <Provider store={store}>
+        <MainProvider>
+          <Grommet theme={theme} full>
+            <CheckAuth>
+              <Component {...pageProps} />
+            </CheckAuth>
+          </Grommet>
+        </MainProvider>
+      </Provider>
     )
   }
 }

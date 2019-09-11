@@ -1,7 +1,9 @@
-import React, { useContext } from "react"
-import { Box, Text, Button } from "grommet"
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Box, Text, Button } from "grommet";
 
-import MainContext from "../../../contexts/main"
+import { selectScreen, selectTranslation } from "../../../redux/selectors";
+import { updateScreen } from "../../../redux/slices/config";
 
 const ListItem: React.FC<{ title: string; selected: boolean }> = ({
   title,
@@ -20,27 +22,39 @@ const ListItem: React.FC<{ title: string; selected: boolean }> = ({
       {title}
     </Text>
   </Box>
-)
+);
 
 const ScreenList: React.FC = () => {
-  const { translation, screen, setScreen } = useContext(MainContext)
+  const dispatch = useDispatch();
+  const screen = useSelector(selectScreen);
+  const translation = useSelector(selectTranslation);
 
-  let appScreens
+  const handleClickScreen = useCallback(
+    (screen: string): void => {
+      dispatch(updateScreen(screen));
+    },
+    [dispatch, updateScreen]
+  );
+
+  let appScreens;
   if (translation) {
-    appScreens = Object.keys(translation.language)
+    appScreens = Object.keys(translation.language);
   } else {
-    appScreens = []
+    appScreens = [];
   }
 
   return (
     <Box fill pad="xsmall">
       {appScreens.map(appScreen => (
-        <Button key={appScreen} onClick={(): void => setScreen(appScreen)}>
+        <Button
+          key={appScreen}
+          onClick={(): void => handleClickScreen(appScreen)}
+        >
           <ListItem title={appScreen} selected={screen === appScreen} />
         </Button>
       ))}
     </Box>
-  )
-}
+  );
+};
 
-export default ScreenList
+export default ScreenList;

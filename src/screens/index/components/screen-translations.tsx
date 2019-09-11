@@ -1,28 +1,23 @@
-import React, { useContext, useCallback, useState, useEffect } from "react"
-import { Box, Button } from "grommet"
+import React, { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Box, Button } from "grommet";
 
-import MainContext from "../../../contexts/main"
-import TranslationList from "./translation-list"
-import SaveButton from "./save-button"
+import { selectLanguages, selectLanguage } from "../../../redux/selectors";
+import TranslationList from "./translation-list";
+import SaveButton from "./save-button";
+import { updateLanguage } from "../../../redux/slices/config";
 
 const ScreenTranslations: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const { languages, language, setLanguage } = useContext(MainContext)
+  const dispatch = useDispatch();
+  const languages = useSelector(selectLanguages);
+  const language = useSelector(selectLanguage);
 
   const handleClickLanguage = useCallback(
-    (index: number): void => {
-      const selectedLanguage = languages[index]
-      setLanguage(selectedLanguage)
+    (languageCode: string): void => {
+      dispatch(updateLanguage(languageCode));
     },
-    [languages, setLanguage]
-  )
-
-  useEffect(() => {
-    const newActiveIndex = languages.findIndex(
-      languageCode => languageCode === language
-    )
-    setActiveIndex(newActiveIndex === -1 ? 0 : newActiveIndex)
-  }, [language, languages, setActiveIndex])
+    [languages]
+  );
 
   return (
     <Box align="start">
@@ -34,12 +29,12 @@ const ScreenTranslations: React.FC = () => {
         margin={{ bottom: "small" }}
       >
         <Box direction="row" align="center">
-          {languages.map((languageCode, index) => (
+          {languages.map(languageCode => (
             <Button
-              primary={index === activeIndex}
               key={languageCode}
+              primary={languageCode === language}
               label={languageCode}
-              onClick={(): void => handleClickLanguage(index)}
+              onClick={(): void => handleClickLanguage(languageCode)}
               margin={{ right: "small" }}
             />
           ))}
@@ -48,7 +43,7 @@ const ScreenTranslations: React.FC = () => {
       </Box>
       <TranslationList />
     </Box>
-  )
-}
+  );
+};
 
-export default ScreenTranslations
+export default ScreenTranslations;

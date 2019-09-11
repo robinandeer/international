@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext } from "react";
 import {
   Table,
   TableBody,
@@ -7,9 +7,9 @@ import {
   Text,
   TextInput,
   Box,
-} from "grommet"
+} from "grommet";
 
-import MainContext from "../../../contexts/main"
+import MainContext from "../../../contexts/main";
 
 const TranslationList: React.FC = () => {
   const {
@@ -20,7 +20,7 @@ const TranslationList: React.FC = () => {
     refTranslation,
     refLanguage,
     language,
-  } = useContext(MainContext)
+  } = useContext(MainContext);
 
   if (translation && data && screen && refTranslation) {
     return (
@@ -86,10 +86,10 @@ const TranslationList: React.FC = () => {
           ))}
         </TableBody>
       </Table>
-    )
+    );
   } else {
-    return null
+    return null;
   }
-}
+};
 
-export default TranslationList
+export default TranslationList;

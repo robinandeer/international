@@ -1,22 +1,23 @@
-import React, { useContext, useCallback, useState, useEffect } from "react"
-import { Box, Image } from "grommet"
+import React, { useCallback, useState, useEffect } from "react";
+import { Box, Image } from "grommet";
+import { useSelector } from "react-redux";
 
-import { Screenshot, ScreenshotsApiResponse } from "../../../types"
-import MainContext from "../../../contexts/main"
+import { Screenshot, ScreenshotsApiResponse } from "../../../types";
+import { selectScreen } from "../../../redux/selectors";
 
 const Screenshots: React.FC = () => {
-  const [screenshots, setScreenshots] = useState<Screenshot[]>([])
-  const { screen } = useContext(MainContext)
+  const [screenshots, setScreenshots] = useState<Screenshot[]>([]);
+  const screen = useSelector(selectScreen);
 
   const fetchScreenshots = useCallback(async () => {
-    const response = await fetch(`/api/screenshots?screen=${screen}`)
-    const data = (await response.json()) as ScreenshotsApiResponse
-    setScreenshots(data.screenshots)
-  }, [screen])
+    const response = await fetch(`/api/screenshots?screen=${screen}`);
+    const data = (await response.json()) as ScreenshotsApiResponse;
+    setScreenshots(data.screenshots);
+  }, [screen]);
 
   useEffect(() => {
-    fetchScreenshots()
-  }, [fetchScreenshots])
+    fetchScreenshots();
+  }, [fetchScreenshots]);
 
   return (
     <Box
@@ -36,7 +37,7 @@ const Screenshots: React.FC = () => {
         />
       ))}
     </Box>
-  )
-}
+  );
+};
 
-export default Screenshots
+export default Screenshots;

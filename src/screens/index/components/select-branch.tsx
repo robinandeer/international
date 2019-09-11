@@ -1,24 +1,24 @@
-import React, { useContext, useState, useCallback } from "react"
-import { Box, Menu, Layer, Form, FormField, TextInput, Button } from "grommet"
+import React, { useContext, useState, useCallback } from "react";
+import { Box, Menu, Layer, Form, FormField, TextInput, Button } from "grommet";
 
-import MainContext from "../../../contexts/main"
+import MainContext from "../../../contexts/main";
 
 const SelectBranch: React.FC = () => {
-  const { branch, branches, setBranch, setBranches } = useContext(MainContext)
-  const [showModal, setShowModal] = useState(false)
-  const [branchName, setBranchName] = useState("")
+  const { branch, branches, setBranch, setBranches } = useContext(MainContext);
+  const [showModal, setShowModal] = useState(false);
+  const [branchName, setBranchName] = useState("");
 
   const handleSubmitNewBranch = useCallback(async () => {
     await fetch("/api/branches", {
       method: "POST",
       body: JSON.stringify({ name: branchName }),
-    })
+    });
 
-    setBranches([...branches, branchName])
-    setBranch(branchName)
-    setBranchName("")
-    setShowModal(false)
-  }, [branches, branchName])
+    setBranches([...branches, branchName]);
+    setBranch(branchName);
+    setBranchName("");
+    setShowModal(false);
+  }, [branches, branchName]);
 
   return (
     <>
@@ -66,7 +66,7 @@ const SelectBranch: React.FC = () => {
         </Layer>
       )}
     </>
-  )
-}
+  );
+};
 
-export default SelectBranch
+export default SelectBranch;

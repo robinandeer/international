@@ -1,22 +1,22 @@
-import React, { useCallback, useContext, useState } from "react"
-import { Button } from "grommet"
+import React, { useCallback, useContext, useState } from "react";
+import { Button } from "grommet";
 
-import { TranslationApiResponse } from "../../../types"
-import MainContext from "../../../contexts/main"
+import { TranslationApiResponse } from "../../../types";
+import MainContext from "../../../contexts/main";
 
 const updateTranslation = async (
   languageCode: string,
   branchName: string,
   languageData: object
 ): Promise<TranslationApiResponse> => {
-  const url = `/api/translations/${languageCode}?branch=${branchName}`
+  const url = `/api/translations/${languageCode}?branch=${branchName}`;
   const response = await fetch(url, {
     method: "PUT",
     body: JSON.stringify(languageData),
-  })
-  const data = (await response.json()) as TranslationApiResponse
-  return data
-}
+  });
+  const data = (await response.json()) as TranslationApiResponse;
+  return data;
+};
 
 const SaveButton: React.FC = () => {
   const {
@@ -26,22 +26,22 @@ const SaveButton: React.FC = () => {
     setTranslation,
     setRefTranslation,
     refLanguage,
-  } = useContext(MainContext)
-  const [saving, setSaving] = useState<boolean>(false)
+  } = useContext(MainContext);
+  const [saving, setSaving] = useState<boolean>(false);
 
   const updateLanguage = useCallback(async (): Promise<void> => {
-    setSaving(true)
-    const newData = await updateTranslation(language, branch, data)
-    setTranslation(newData)
+    setSaving(true);
+    const newData = await updateTranslation(language, branch, data);
+    setTranslation(newData);
     if (language === refLanguage) {
-      setRefTranslation(newData)
+      setRefTranslation(newData);
     }
-    setSaving(false)
-  }, [language, branch, data])
+    setSaving(false);
+  }, [language, branch, data]);
 
   const handleSaveTranslations = useCallback(() => {
-    updateLanguage()
-  }, [updateLanguage])
+    updateLanguage();
+  }, [updateLanguage]);
 
   return (
     <Button
@@ -50,7 +50,7 @@ const SaveButton: React.FC = () => {
       onClick={handleSaveTranslations}
       disabled={saving}
     />
-  )
-}
+  );
+};
 
-export default SaveButton
+export default SaveButton;
