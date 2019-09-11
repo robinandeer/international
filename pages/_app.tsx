@@ -1,11 +1,10 @@
-import App from "next/app"
-import React from "react"
-import { Provider } from "react-redux"
-import { Grommet } from "grommet"
+import App from "next/app";
+import React from "react";
+import { Provider } from "react-redux";
+import { Grommet } from "grommet";
 
-import { MainProvider } from "../src/contexts/main"
-import CheckAuth from "../src/components/check-auth"
-import store from "../src/redux/store"
+import CheckAuth from "../src/components/check-auth";
+import store from "../src/redux/store";
 
 const theme = {
   global: {
@@ -16,7 +15,7 @@ const theme = {
       "elevation-1": "rgba(255, 255, 255, 0.05)",
     },
     font: {
-      family: "Roboto",
+      family: "system-ui",
       size: "16px",
     },
   },
@@ -26,23 +25,21 @@ const theme = {
       fontWeight: "bold",
     },
   },
-}
+};
 
 class MyApp extends App {
   public render() {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps } = this.props;
     return (
       <Provider store={store}>
-        <MainProvider>
-          <Grommet theme={theme} full>
-            <CheckAuth>
-              <Component {...pageProps} />
-            </CheckAuth>
-          </Grommet>
-        </MainProvider>
+        <Grommet theme={theme} full>
+          <CheckAuth>
+            <Component {...pageProps} />
+          </CheckAuth>
+        </Grommet>
       </Provider>
-    )
+    );
   }
 }
 
-export default MyApp
+export default MyApp;

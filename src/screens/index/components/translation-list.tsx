@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Table,
   TableBody,
@@ -9,18 +10,39 @@ import {
   Box,
 } from "grommet";
 
-import MainContext from "../../../contexts/main";
+import {
+  selectScreen,
+  selectTranslation,
+  selectTranslationData,
+  selectRefTranslation,
+  selectRefLanguage,
+  selectLanguage,
+} from "../../../redux/selectors";
+import { updateTranslationData } from "../../../redux/slices/data";
 
 const TranslationList: React.FC = () => {
-  const {
-    translation,
-    data,
-    setData,
-    screen,
-    refTranslation,
-    refLanguage,
-    language,
-  } = useContext(MainContext);
+  const dispatch = useDispatch();
+  const screen = useSelector(selectScreen);
+  const translation = useSelector(selectTranslation);
+  const data = useSelector(selectTranslationData);
+  const refTranslation = useSelector(selectRefTranslation);
+  const refLanguage = useSelector(selectRefLanguage);
+  const language = useSelector(selectLanguage);
+
+  const handleChangeTranslationData = useCallback(
+    (screen: string, key: string, value: string) => {
+      const newData = {
+        ...data,
+        [screen]: {
+          ...data[screen],
+          [key]: value,
+        },
+      };
+
+      dispatch(updateTranslationData(newData));
+    },
+    []
+  );
 
   if (translation && data && screen && refTranslation) {
     return (
@@ -60,14 +82,8 @@ const TranslationList: React.FC = () => {
                   <TextInput
                     style={{ width: "100%" }}
                     value={data[screen][key]}
-                    onChange={(event): void =>
-                      setData({
-                        ...data,
-                        [screen]: {
-                          ...data[screen],
-                          [key]: event.target.value,
-                        },
-                      })
+                    onChange={({ target: { value } }): void =>
+                      handleChangeTranslationData(screen, key, value)
                     }
                   />
                   {data[screen][key] !== value && (

@@ -1,47 +1,17 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "grommet";
 
-import { TranslationApiResponse } from "../../../types";
-import MainContext from "../../../contexts/main";
-
-const updateTranslation = async (
-  languageCode: string,
-  branchName: string,
-  languageData: object
-): Promise<TranslationApiResponse> => {
-  const url = `/api/translations/${languageCode}?branch=${branchName}`;
-  const response = await fetch(url, {
-    method: "PUT",
-    body: JSON.stringify(languageData),
-  });
-  const data = (await response.json()) as TranslationApiResponse;
-  return data;
-};
+import { selectSavingTranslation } from "../../../redux/selectors";
+import { saveTranslation } from "../../../redux/slices/data";
 
 const SaveButton: React.FC = () => {
-  const {
-    language,
-    branch,
-    data,
-    setTranslation,
-    setRefTranslation,
-    refLanguage,
-  } = useContext(MainContext);
-  const [saving, setSaving] = useState<boolean>(false);
-
-  const updateLanguage = useCallback(async (): Promise<void> => {
-    setSaving(true);
-    const newData = await updateTranslation(language, branch, data);
-    setTranslation(newData);
-    if (language === refLanguage) {
-      setRefTranslation(newData);
-    }
-    setSaving(false);
-  }, [language, branch, data]);
+  const dispatch = useDispatch();
+  const saving = useSelector(selectSavingTranslation);
 
   const handleSaveTranslations = useCallback(() => {
-    updateLanguage();
-  }, [updateLanguage]);
+    dispatch(saveTranslation());
+  }, []);
 
   return (
     <Button

@@ -28,13 +28,7 @@ const Screenshots: React.FC = () => {
       height="100%"
     >
       {screenshots.map(image => (
-        <Image
-          key={image.url}
-          src={image.url}
-          alt={image.name}
-          height="100%"
-          width="auto"
-        />
+        <Image key={image.url} src={image.url} alt={image.name} fit="contain" />
       ))}
     </Box>
   );

@@ -8,12 +8,14 @@ interface DataState {
   translation: TranslationApiResponse | null;
   translationData: object | null;
   refTranslation: TranslationApiResponse | null;
+  saving: boolean;
 }
 
 const initialState: DataState = {
   translation: null,
   translationData: null,
   refTranslation: null,
+  saving: false,
 };
 
 const data = createSlice({
@@ -29,6 +31,9 @@ const data = createSlice({
     updateRefTranslation(state, action: PayloadAction<TranslationApiResponse>) {
       state.refTranslation = action.payload;
     },
+    updateSaving(state, action: PayloadAction<boolean>) {
+      state.saving = action.payload;
+    },
   },
 });
 
@@ -36,6 +41,7 @@ export const {
   updateTranslation,
   updateTranslationData,
   updateRefTranslation,
+  updateSaving,
 } = data.actions;
 
 export default data.reducer;
@@ -74,4 +80,28 @@ export const fetchTranslation = (): AppThunk => async (dispatch, getState) => {
   if (!screen) {
     dispatch(updateScreen(Object.keys(translation.language)[0]));
   }
+};
+
+export const saveTranslation = (): AppThunk => async (dispatch, getState) => {
+  dispatch(updateSaving(true));
+
+  const {
+    config: { language, branch, refLanguage },
+    data: { translationData },
+  } = getState();
+
+  const url = `/api/translations/${language}?branch=${branch}`;
+  const response = await fetch(url, {
+    method: "PUT",
+    body: JSON.stringify(translationData),
+  });
+  const newTranslation = (await response.json()) as TranslationApiResponse;
+
+  dispatch(updateTranslation(newTranslation));
+
+  if (language === refLanguage) {
+    dispatch(updateRefTranslation(newTranslation));
+  }
+
+  dispatch(updateSaving(false));
 };

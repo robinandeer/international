@@ -18,3 +18,13 @@ export const selectScreen = (state: RootState): string => state.config.screen;
 
 export const selectTranslation = (state: RootState): TranslationApiResponse =>
   state.data.translation;
+
+export const selectTranslationData = (state: RootState): object =>
+  state.data.translationData;
+
+export const selectRefTranslation = (
+  state: RootState
+): TranslationApiResponse => state.data.refTranslation;
+
+export const selectSavingTranslation = (state: RootState): boolean =>
+  state.data.saving;
