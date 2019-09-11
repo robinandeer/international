@@ -39,8 +39,8 @@ const IndexScreen: NextPage = () => {
 
   return (
     <Grid
-      fill
-      rows={["xxsmall", "flex"]}
+      style={{ height: "100vh", width: "100vw" }}
+      rows={["xsmall", "flex"]}
       columns={["small", "flex"]}
       areas={[
         { name: "header", start: [0, 0], end: [1, 0] },
@@ -48,21 +48,19 @@ const IndexScreen: NextPage = () => {
         { name: "main", start: [1, 1], end: [1, 1] },
       ]}
     >
-      <Box gridArea="header">
+      <Box gridArea="header" pad={{ horizontal: "medium" }}>
         <Header />
       </Box>
-      <Box gridArea="nav">
+      <Box gridArea="nav" pad={{ left: "medium" }}>
         <ScreenList />
       </Box>
-      <Box gridArea="main">
-        <Grid fill rows={["1/2", "1/2"]}>
-          <Box pad="small">
-            <Screenshots />
-          </Box>
-          <Box pad="small">
-            <ScreenTranslations />
-          </Box>
-        </Grid>
+      <Box gridArea="main" pad={{ horizontal: "medium" }}>
+        <Box pad="small" style={{ flex: 1 }}>
+          <Screenshots />
+        </Box>
+        <Box pad="small" style={{ flex: 1, flexShrink: 0 }}>
+          <ScreenTranslations />
+        </Box>
       </Box>
     </Grid>
   );

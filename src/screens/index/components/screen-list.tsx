@@ -44,15 +44,25 @@ const ScreenList: React.FC = () => {
   }
 
   return (
-    <Box fill pad="xsmall">
-      {appScreens.map(appScreen => (
-        <Button
-          key={appScreen}
-          onClick={(): void => handleClickScreen(appScreen)}
-        >
-          <ListItem title={appScreen} selected={screen === appScreen} />
-        </Button>
-      ))}
+    <Box>
+      <Text
+        weight="bold"
+        size="small"
+        color="white"
+        margin={{ bottom: "xsmall" }}
+      >
+        Screens
+      </Text>
+      <Box fill>
+        {appScreens.map(appScreen => (
+          <Button
+            key={appScreen}
+            onClick={(): void => handleClickScreen(appScreen)}
+          >
+            <ListItem title={appScreen} selected={screen === appScreen} />
+          </Button>
+        ))}
+      </Box>
     </Box>
   );
 };

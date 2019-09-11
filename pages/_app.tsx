@@ -25,6 +25,11 @@ const theme = {
       fontWeight: "bold",
     },
   },
+  carousel: {
+    animation: {
+      duration: 250,
+    },
+  },
 };
 
 class MyApp extends App {
