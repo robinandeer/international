@@ -10,7 +10,8 @@ const theme = {
   global: {
     colors: {
       background: "#131227",
-      "accent-1": "#A17D7C",
+      "accent-1": "#af908f",
+      "accent-2": "rgba(161, 125, 124, 0.15)",
       placeholder: "#757576",
       "elevation-1": "rgba(255, 255, 255, 0.05)",
     },

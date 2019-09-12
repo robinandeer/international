@@ -27,10 +27,18 @@ const auth = createSlice({
     saveAuth(state, action: PayloadAction<string>) {
       state.email = action.payload;
     },
+    removeAuth(state) {
+      state.email = null;
+    },
   },
 });
 
-export const { checkAuthSuccess, checkAuthFailure, saveAuth } = auth.actions;
+export const {
+  checkAuthSuccess,
+  checkAuthFailure,
+  saveAuth,
+  removeAuth,
+} = auth.actions;
 export default auth.reducer;
 
 function emailToBranchName(email: string): string {
@@ -72,4 +80,9 @@ export const setAuth = (email: string): AppThunk => async dispatch => {
   window.localStorage.setItem("email", email);
   dispatch(updateBranch(branchName));
   dispatch(saveAuth(email));
+};
+
+export const unsetAuth = (): AppThunk => dispatch => {
+  window.localStorage.removeItem("email");
+  dispatch(removeAuth());
 };

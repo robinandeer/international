@@ -2,10 +2,11 @@ import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Button } from "grommet";
 
+import { updateLanguage } from "../../../redux/slices/config";
 import { selectLanguages, selectLanguage } from "../../../redux/selectors";
+import Pill from "../../../components/pill";
 import TranslationList from "./translation-list";
 import SaveButton from "./save-button";
-import { updateLanguage } from "../../../redux/slices/config";
 
 const ScreenTranslations: React.FC = () => {
   const dispatch = useDispatch();
@@ -32,11 +33,11 @@ const ScreenTranslations: React.FC = () => {
           {languages.map(languageCode => (
             <Button
               key={languageCode}
-              primary={languageCode === language}
-              label={languageCode}
               onClick={(): void => handleClickLanguage(languageCode)}
               margin={{ right: "small" }}
-            />
+            >
+              <Pill title={languageCode} selected={languageCode === language} />
+            </Button>
           ))}
         </Box>
         <SaveButton />

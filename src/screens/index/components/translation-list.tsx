@@ -50,7 +50,7 @@ const TranslationList: React.FC = () => {
         style={{
           width: "100%",
           background: "rgba(255, 255, 255, 0.05)",
-          borderRadius: 24,
+          borderRadius: 8,
         }}
       >
         <TableBody>
