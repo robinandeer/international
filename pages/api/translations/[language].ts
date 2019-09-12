@@ -29,8 +29,7 @@ const getRequest = async (req: NowRequest, res: NowResponse): Promise<void> => {
 const putRequest = async (req: NowRequest, res: NowResponse): Promise<void> => {
   const branchName = req.query.branch as string;
   const languageCode = req.query.language as LanguageCode;
-  const inData = JSON.parse(req.body);
-  await updateTranslation(languageCode, branchName, inData);
+  await updateTranslation(languageCode, branchName, req.body);
   getRequest(req, res);
 };
 

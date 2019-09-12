@@ -120,6 +120,8 @@ It's a good idea to increment the API version with every new deploy. That way, e
 
 ## REST API
 
+See the official [API docs][api-docs] powered by Postman.
+
 <details><summary>GET <code>/api/branches</code></summary>
 <p>
 
@@ -306,3 +308,4 @@ Update translations for a specific language. This will create a commit with the 
 [now]: https://zeit.co
 [gh-token]: https://github.com/settings/tokens
 [next]: https://nextjs.org
+[api-docs]: https://documenter.getpostman.com/view/5200342/SVmsVfiP?version=latest

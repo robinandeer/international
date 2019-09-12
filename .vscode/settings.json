@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
     "Octokit"
-  ]
+  ],
+  "deepcode.review.results.hideInformationIssues": false
 }

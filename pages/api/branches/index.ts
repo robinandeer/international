@@ -15,7 +15,7 @@ const postRequest = async (
   req: NowRequest,
   res: NowResponse
 ): Promise<void> => {
-  const { name } = JSON.parse(req.body);
+  const { name } = req.body;
   const branch = await createBranch(name);
   res.json({ branch });
 };
