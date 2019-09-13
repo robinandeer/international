@@ -98,7 +98,8 @@ export const getTranslation = async (
 export const updateTranslation = async (
   languageCode: LanguageCode,
   branchName: string,
-  updatedData: object
+  updatedData: object,
+  email: string
 ): Promise<Octokit.ReposCreateOrUpdateFileResponse> => {
   const filePath = `translations/${languageCode}.json`;
   const { data: translationFile } = await octokit.repos.getContents({
@@ -117,6 +118,10 @@ export const updateTranslation = async (
     sha: translationFile.sha,
     message: `Update ${languageCode} translations`,
     content: Buffer.from(stringContent).toString("base64"),
+    committer: {
+      name: "Language Editor",
+      email,
+    },
   });
 
   return data;

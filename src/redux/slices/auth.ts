@@ -56,6 +56,10 @@ export const checkAuth = (): AppThunk => async dispatch => {
       await fetch("/api/branches", {
         method: "POST",
         body: JSON.stringify({ name: branchName }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
       });
     }
 
@@ -74,6 +78,10 @@ export const setAuth = (email: string): AppThunk => async dispatch => {
     await fetch("/api/branches", {
       method: "POST",
       body: JSON.stringify({ name: branchName }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
     });
   }
 

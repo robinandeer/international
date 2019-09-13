@@ -86,14 +86,19 @@ export const saveTranslation = (): AppThunk => async (dispatch, getState) => {
   dispatch(updateSaving(true));
 
   const {
+    auth: { email },
     config: { language, branch, refLanguage },
     data: { translationData },
   } = getState();
 
-  const url = `/api/translations/${language}?branch=${branch}`;
+  const url = `/api/translations/${language}?branch=${branch}&email=${email}`;
   const response = await fetch(url, {
     method: "PUT",
     body: JSON.stringify(translationData),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
   });
   const newTranslation = (await response.json()) as TranslationApiResponse;
 
