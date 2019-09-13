@@ -828,15 +828,15 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.4.tgz#a87b4b04e5ae14a88d48ebef15015f6b7d1f5677"
   integrity sha512-kBa+cDHOR9jpRJ+kcGMsysrls0leukrm68DmFQoMIWQcXdr2cZvyvypWuGYT7U+9kAExUE7+T7r6G3C3A6L8MQ==
 
-"@now/next@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@now/next/-/next-0.7.0.tgz#b172b4cc036c11a499ee6957b394cc7e4f4c9ff9"
-  integrity sha512-UuVWFvyIENTX8mH2dyoD2tnK5MZhDz3cSUHkxDdVx03XRhbwnXCs56y0L1FSPdTKpn9WoHi9GnG5JcfaqAJMGQ==
+"@now/next@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@now/next/-/next-1.0.0.tgz#c0d82a5af6f3076d7158970377f896cd5b09aa83"
+  integrity sha512-w9rgLcqsGW/r3/oL/zzD74YI8g/VGSiF7VYXrJAmQjDHFOVJN5vpK6CUXr0TnsB+jM2NY9WKhoi3xf8UbMUBOQ==
 
-"@now/node@^0.12.7":
-  version "0.12.7"
-  resolved "https://registry.yarnpkg.com/@now/node/-/node-0.12.7.tgz#d70e4357fd50a3a3bfd62a7f341947a8f47f8cf3"
-  integrity sha512-ksV0lf9sF/ppS9UMPoBxaHLw6bh2jceJzjoSCrhKZJbKi0Hi82UiZCHJ7R7ZSVXxP1B++dRis4f2xvIEIyvbOA==
+"@now/node@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@now/node/-/node-1.0.0.tgz#703080f253390ea554a0dfd0ccc5d4df54de6f8a"
+  integrity sha512-Ha2Dmtf6RHA0wkPjIeEBIBNq5Je0YwUPwUgH3f7FHlnJvTWREncYoUJdfC60BTkOvNi6KukihVLHGcD2wd51Dw==
   dependencies:
     "@types/node" "*"
 

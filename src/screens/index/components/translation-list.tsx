@@ -41,7 +41,7 @@ const TranslationList: React.FC = () => {
 
       dispatch(updateTranslationData(newData));
     },
-    []
+    [data]
   );
 
   if (translation && data && screen && refTranslation) {
