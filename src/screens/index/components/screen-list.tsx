@@ -2,14 +2,14 @@ import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Box, Button } from "grommet";
 
-import { selectScreen, selectTranslation } from "../../../redux/selectors";
+import { selectScreen, selectScreens } from "../../../redux/selectors";
 import { updateScreen } from "../../../redux/slices/config";
 import Pill from "../../../components/pill";
 
 const ScreenList: React.FC = () => {
   const dispatch = useDispatch();
+  const appScreens = useSelector(selectScreens);
   const screen = useSelector(selectScreen);
-  const translation = useSelector(selectTranslation);
 
   const handleClickScreen = useCallback(
     (screen: string): void => {
@@ -17,13 +17,6 @@ const ScreenList: React.FC = () => {
     },
     [dispatch, updateScreen]
   );
-
-  let appScreens;
-  if (translation) {
-    appScreens = Object.keys(translation.language);
-  } else {
-    appScreens = [];
-  }
 
   return (
     <Box>

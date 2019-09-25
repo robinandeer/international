@@ -14,10 +14,28 @@ export const selectEmail = (state: RootState): string => state.auth.email;
 export const selectLanguages = (state: RootState): string[] =>
   state.config.languages;
 
+export const selectScreens = (state: RootState): string[] => {
+  return state.data.translation
+    ? Object.keys(state.data.translation.language).sort()
+    : [];
+};
+
 export const selectScreen = (state: RootState): string => state.config.screen;
 
 export const selectTranslation = (state: RootState): TranslationApiResponse =>
   state.data.translation;
+
+export const selectScreenTranslationList = (
+  state: RootState
+): Array<[string, unknown]> => {
+  if (state.data.translation && state.config.screen) {
+    return Object.entries(
+      state.data.translation.language[state.config.screen]
+    ).sort();
+  } else {
+    return [];
+  }
+};
 
 export const selectTranslationData = (state: RootState): object =>
   state.data.translationData;

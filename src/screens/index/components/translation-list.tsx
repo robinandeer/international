@@ -12,22 +12,22 @@ import {
 
 import {
   selectScreen,
-  selectTranslation,
   selectTranslationData,
   selectRefTranslation,
   selectRefLanguage,
   selectLanguage,
+  selectScreenTranslationList,
 } from "../../../redux/selectors";
 import { updateTranslationData } from "../../../redux/slices/data";
 
 const TranslationList: React.FC = () => {
   const dispatch = useDispatch();
   const screen = useSelector(selectScreen);
-  const translation = useSelector(selectTranslation);
   const data = useSelector(selectTranslationData);
   const refTranslation = useSelector(selectRefTranslation);
   const refLanguage = useSelector(selectRefLanguage);
   const language = useSelector(selectLanguage);
+  const screenTranslationList = useSelector(selectScreenTranslationList);
 
   const handleChangeTranslationData = useCallback(
     (screen: string, key: string, value: string) => {
@@ -44,7 +44,7 @@ const TranslationList: React.FC = () => {
     [data]
   );
 
-  if (translation && data && screen && refTranslation) {
+  if (screenTranslationList && data && refTranslation) {
     return (
       <Table
         style={{
@@ -54,7 +54,7 @@ const TranslationList: React.FC = () => {
         }}
       >
         <TableBody>
-          {Object.entries(translation.language[screen]).map(([key, value]) => (
+          {screenTranslationList.map(([key, value]) => (
             <TableRow
               key={key}
               style={{
