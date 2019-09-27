@@ -4,5 +4,11 @@
     "GITHUB_API_TOKEN": "@github-token",
     "GITHUB_USERNAME": "robinandeer",
     "GITHUB_REPO": "international"
-  }
+  },
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next"
+    }
+  ]
 }

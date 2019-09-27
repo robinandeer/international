@@ -65,6 +65,16 @@ export const createBranch = async (
   return data;
 };
 
+const determineIfIsItemList = (
+  toBeDetermined: Octokit.ReposGetContentsResponse
+): toBeDetermined is Octokit.ReposGetContentsResponseItem[] => {
+  if ((toBeDetermined as Octokit.ReposGetContentsResponseItem[]).map) {
+    return true;
+  }
+
+  return false;
+};
+
 export const getLanguageCodes = async (): Promise<string[]> => {
   const filePath = "translations/";
   const { data: translationsDir } = await octokit.repos.getContents({
@@ -73,8 +83,14 @@ export const getLanguageCodes = async (): Promise<string[]> => {
     path: filePath,
   });
 
-  const languages = translationsDir.map(item => item.name.replace(".json", ""));
-  return languages;
+  if (determineIfIsItemList(translationsDir)) {
+    const languages = translationsDir.map(item =>
+      item.name.replace(".json", "")
+    );
+    return languages;
+  }
+
+  return [];
 };
 
 export const getTranslation = async (
@@ -89,10 +105,12 @@ export const getTranslation = async (
     path: filePath,
   });
 
-  const buffer = Buffer.from(translationFile.content, translationFile.encoding);
-  const translationString = buffer.toString();
-  const translationData = JSON.parse(translationString);
-  return translationData;
+  if (!determineIfIsItemList(translationFile)) {
+    const buffer = Buffer.from(translationFile.content, "base64");
+    const translationString = buffer.toString();
+    const translationData = JSON.parse(translationString);
+    return translationData;
+  }
 };
 
 export const updateTranslation = async (
@@ -109,22 +127,24 @@ export const updateTranslation = async (
     path: filePath,
   });
 
-  const stringContent = JSON.stringify(updatedData, null, 2);
-  const { data } = await octokit.repos.createOrUpdateFile({
-    owner: OWNER,
-    repo: REPO_NAME,
-    path: filePath,
-    branch: branchName,
-    sha: translationFile.sha,
-    message: `Update ${languageCode} translations`,
-    content: Buffer.from(stringContent).toString("base64"),
-    committer: {
-      name: "Language Editor",
-      email,
-    },
-  });
+  if (!determineIfIsItemList(translationFile)) {
+    const stringContent = JSON.stringify(updatedData, null, 2);
+    const { data } = await octokit.repos.createOrUpdateFile({
+      owner: OWNER,
+      repo: REPO_NAME,
+      path: filePath,
+      branch: branchName,
+      sha: translationFile.sha,
+      message: `Update ${languageCode} translations`,
+      content: Buffer.from(stringContent).toString("base64"),
+      committer: {
+        name: "Language Editor",
+        email,
+      },
+    });
 
-  return data;
+    return data;
+  }
 };
 
 export const createPullRequest = async (
@@ -152,11 +172,15 @@ export const listScreenshots = async (
       path: filePath,
     });
 
-    const screenshots = screenshotDir.map(item => ({
-      name: item.name,
-      url: item.download_url,
-    }));
-    return screenshots;
+    if (determineIfIsItemList(screenshotDir)) {
+      const screenshots = screenshotDir.map(item => ({
+        name: item.name,
+        url: item.download_url,
+      }));
+      return screenshots;
+    }
+
+    return [];
   } catch {
     return [];
   }
