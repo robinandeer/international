@@ -1,14 +1,18 @@
 import React from "react";
 import { Box, Text } from "grommet";
 
+import PulseSpinner from "./pulse-spinner";
+
 const PillButton: React.FC<{
   title: string;
   selected: boolean;
-}> = ({ title, selected }) => (
+  loading?: boolean;
+}> = ({ title, selected, loading }) => (
   <Box
     pad={{ horizontal: "small", vertical: "xsmall" }}
     background={selected ? "accent-2" : null}
     style={{ borderRadius: 8 }}
+    direction="row"
   >
     <Text
       size="medium"
@@ -17,6 +21,11 @@ const PillButton: React.FC<{
     >
       {title}
     </Text>
+    {loading && (
+      <Box margin={{ left: "small" }}>
+        <PulseSpinner />
+      </Box>
+    )}
   </Box>
 );
 

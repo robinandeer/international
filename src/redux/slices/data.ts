@@ -9,6 +9,7 @@ interface DataState {
   translationData: object | null;
   refTranslation: TranslationApiResponse | null;
   saving: boolean;
+  loadingTranslation: boolean;
 }
 
 const initialState: DataState = {
@@ -16,14 +17,25 @@ const initialState: DataState = {
   translationData: null,
   refTranslation: null,
   saving: false,
+  loadingTranslation: false,
 };
 
 const data = createSlice({
   slice: "data",
   initialState,
   reducers: {
-    updateTranslation(state, action: PayloadAction<TranslationApiResponse>) {
+    updateTranslationStart(state) {
+      state.loadingTranslation = true;
+    },
+    updateTranslationSuccess(
+      state,
+      action: PayloadAction<TranslationApiResponse>
+    ) {
       state.translation = action.payload;
+      state.loadingTranslation = false;
+    },
+    updateTranslationFail(state) {
+      state.loadingTranslation = false;
     },
     updateTranslationData(state, action: PayloadAction<object>) {
       state.translationData = action.payload;
@@ -38,7 +50,9 @@ const data = createSlice({
 });
 
 export const {
-  updateTranslation,
+  updateTranslationStart,
+  updateTranslationSuccess,
+  updateTranslationFail,
   updateTranslationData,
   updateRefTranslation,
   updateSaving,
@@ -68,17 +82,24 @@ export const fetchRefTranslation = (): AppThunk => async (
 };
 
 export const fetchTranslation = (): AppThunk => async (dispatch, getState) => {
+  dispatch(updateTranslationStart());
+
   const {
     config: { language, branch, screen },
   } = getState();
 
-  const translation = await getTranslation(language, branch);
+  try {
+    const translation = await getTranslation(language, branch);
 
-  dispatch(updateTranslation(translation));
-  dispatch(updateTranslationData(translation.language));
+    dispatch(updateTranslationSuccess(translation));
+    dispatch(updateTranslationData(translation.language));
 
-  if (!screen) {
-    dispatch(updateScreen(Object.keys(translation.language)[0]));
+    if (!screen) {
+      dispatch(updateScreen(Object.keys(translation.language)[0]));
+    }
+  } catch (error) {
+    console.error(error);
+    dispatch(updateTranslationFail());
   }
 };
 
@@ -102,7 +123,7 @@ export const saveTranslation = (): AppThunk => async (dispatch, getState) => {
   });
   const newTranslation = (await response.json()) as TranslationApiResponse;
 
-  dispatch(updateTranslation(newTranslation));
+  dispatch(updateTranslationSuccess(newTranslation));
 
   if (language === refLanguage) {
     dispatch(updateRefTranslation(newTranslation));

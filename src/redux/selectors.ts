@@ -25,6 +25,9 @@ export const selectScreen = (state: RootState): string => state.config.screen;
 export const selectTranslation = (state: RootState): TranslationApiResponse =>
   state.data.translation;
 
+export const selectLoadingLanguage = (state: RootState): string | null =>
+  state.data.loadingTranslation ? state.config.language : null;
+
 export const selectScreenTranslationList = (
   state: RootState
 ): Array<[string, unknown]> => {
