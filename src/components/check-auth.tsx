@@ -37,6 +37,7 @@ const CheckAuth: React.FC = ({ children }) => {
             value={formEmail}
             onChange={({ target: { value } }): void => setFormEmail(value)}
             required
+            autoFocus
           />
         </FormField>
       </Form>

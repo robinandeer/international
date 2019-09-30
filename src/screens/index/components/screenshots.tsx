@@ -21,7 +21,7 @@ const Placeholder: React.FC = () => (
     pad="medium"
   >
     <Text color="rgba(255, 255, 255, 0.5)" size="small" textAlign="center">
-      Ask your developer to add a screenshot here.
+      Ask your developer to add screenshots here.
     </Text>
   </Box>
 );

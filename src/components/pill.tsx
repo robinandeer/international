@@ -22,7 +22,7 @@ const PillButton: React.FC<{
       {title}
     </Text>
     {loading && (
-      <Box margin={{ left: "small" }}>
+      <Box margin={{ left: "xsmall" }}>
         <PulseSpinner />
       </Box>
     )}

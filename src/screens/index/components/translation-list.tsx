@@ -54,7 +54,7 @@ const TranslationList: React.FC = () => {
         }}
       >
         <TableBody>
-          {screenTranslationList.map(([key, value]) => (
+          {screenTranslationList.map(key => (
             <TableRow
               key={key}
               style={{
@@ -86,16 +86,6 @@ const TranslationList: React.FC = () => {
                       handleChangeTranslationData(screen, key, value)
                     }
                   />
-                  {data[screen][key] !== value && (
-                    <Text
-                      size="small"
-                      color="placeholder"
-                      style={{ textDecoration: "line-through" }}
-                      margin={{ top: "xxsmall" }}
-                    >
-                      {value}
-                    </Text>
-                  )}
                 </Box>
               </TableCell>
             </TableRow>

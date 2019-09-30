@@ -1,3 +1,3 @@
-import IndexScreen from "../src/screens/index"
+import IndexScreen from "../src/screens/index";
 
-export default IndexScreen
+export default IndexScreen;

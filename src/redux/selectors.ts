@@ -28,11 +28,9 @@ export const selectTranslation = (state: RootState): TranslationApiResponse =>
 export const selectLoadingLanguage = (state: RootState): string | null =>
   state.data.loadingTranslation ? state.config.language : null;
 
-export const selectScreenTranslationList = (
-  state: RootState
-): Array<[string, unknown]> => {
+export const selectScreenTranslationList = (state: RootState): string[] => {
   if (state.data.translation && state.config.screen) {
-    return Object.entries(
+    return Object.keys(
       state.data.translation.language[state.config.screen]
     ).sort();
   } else {
