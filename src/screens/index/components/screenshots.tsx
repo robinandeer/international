@@ -37,8 +37,10 @@ const Screenshots: React.FC = () => {
   }, [screen]);
 
   useEffect(() => {
-    fetchScreenshots();
-  }, [fetchScreenshots]);
+    if (screen) {
+      fetchScreenshots();
+    }
+  }, [fetchScreenshots, screen]);
 
   return (
     <Box

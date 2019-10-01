@@ -9,8 +9,12 @@ const route = async (req: NowRequest, res: NowResponse): Promise<void> => {
   if (!screen) {
     res.status(400).send("Screen parameter is required");
   } else {
-    const screenshots = await listScreenshots(screen);
-    res.json({ screenshots });
+    try {
+      const screenshots = await listScreenshots(screen);
+      res.json({ screenshots });
+    } catch (error) {
+      res.status(error.status).send(error.name);
+    }
   }
 };
 

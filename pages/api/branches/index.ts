@@ -7,17 +7,25 @@ const getRequest = async (
   _req: NowRequest,
   res: NowResponse
 ): Promise<void> => {
-  const branches = await listBranches();
-  res.json({ branches: branches.filter(branch => branch.name !== "master") });
+  try {
+    const branches = await listBranches();
+    res.json({ branches: branches.filter(branch => branch.name !== "master") });
+  } catch (error) {
+    res.status(error.status).send(error.name);
+  }
 };
 
 const postRequest = async (
   req: NowRequest,
   res: NowResponse
 ): Promise<void> => {
-  const { name } = req.body;
-  const branch = await createBranch(name);
-  res.json({ branch });
+  try {
+    const { name } = req.body;
+    const branch = await createBranch(name);
+    res.json({ branch });
+  } catch (error) {
+    res.status(error.status).send(error.name);
+  }
 };
 
 const route = async (req: NowRequest, res: NowResponse): Promise<void> => {

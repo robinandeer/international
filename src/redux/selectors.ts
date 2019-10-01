@@ -15,35 +15,39 @@ export const selectLanguages = (state: RootState): string[] =>
   state.config.languages;
 
 export const selectScreens = (state: RootState): string[] => {
-  return state.data.translation
-    ? Object.keys(state.data.translation.language).sort()
+  const currentTranslation = state.data.translationMap[state.config.language];
+  return currentTranslation
+    ? Object.keys(currentTranslation.language).sort()
     : [];
 };
 
 export const selectScreen = (state: RootState): string => state.config.screen;
 
-export const selectTranslation = (state: RootState): TranslationApiResponse =>
-  state.data.translation;
+export const selectCurrentTranslation = (
+  state: RootState
+): TranslationApiResponse | undefined =>
+  state.data.translationMap[state.config.language];
 
 export const selectLoadingLanguage = (state: RootState): string | null =>
   state.data.loadingTranslation ? state.config.language : null;
 
 export const selectScreenTranslationList = (state: RootState): string[] => {
-  if (state.data.translation && state.config.screen) {
-    return Object.keys(
-      state.data.translation.language[state.config.screen]
-    ).sort();
+  const currentTranslation = state.data.translationMap[state.config.language];
+  if (currentTranslation && state.config.screen) {
+    return Object.keys(currentTranslation.language[state.config.screen]).sort();
   } else {
     return [];
   }
 };
 
-export const selectTranslationData = (state: RootState): object =>
-  state.data.translationData;
+export const selectCurrentTranslationData = (
+  state: RootState
+): object | undefined => state.data.translationDataMap[state.config.language];
 
 export const selectRefTranslation = (
   state: RootState
-): TranslationApiResponse => state.data.refTranslation;
+): TranslationApiResponse | undefined =>
+  state.data.translationMap[state.config.refLanguage];
 
 export const selectSavingTranslation = (state: RootState): boolean =>
   state.data.saving;

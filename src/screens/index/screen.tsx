@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NextPage } from "next";
 import { useSelector, useDispatch } from "react-redux";
 import { Box, Grid } from "grommet";
 
-import { fetchRefTranslation, fetchTranslation } from "../../redux/slices/data";
+import { fetchTranslation } from "../../redux/slices/data";
 import { fetchLanguages } from "../../redux/slices/config";
 import {
   selectBranch,
   selectRefLanguage,
   selectLanguage,
+  selectCurrentTranslation,
+  selectRefTranslation,
 } from "../../redux/selectors";
 import ScreenTranslations from "./components/screen-translations";
 import Screenshots from "./components/screenshots";
@@ -19,22 +21,24 @@ const IndexScreen: NextPage = () => {
   const branch = useSelector(selectBranch);
   const refLanguage = useSelector(selectRefLanguage);
   const language = useSelector(selectLanguage);
-
-  useEffect(() => {
-    if (language && branch) {
-      dispatch(fetchTranslation());
-    }
-  }, [language, branch]);
-
-  React.useEffect(() => {
-    if (branch && refLanguage) {
-      dispatch(fetchRefTranslation());
-    }
-  }, [branch, refLanguage]);
+  const currentTranslation = useSelector(selectCurrentTranslation);
+  const refTranslation = useSelector(selectRefTranslation);
 
   React.useEffect(() => {
     dispatch(fetchLanguages());
   }, []);
+
+  React.useEffect(() => {
+    if (branch && refLanguage && currentTranslation && !refTranslation) {
+      dispatch(fetchTranslation(refLanguage));
+    }
+  }, [branch, refLanguage, currentTranslation, refTranslation]);
+
+  React.useEffect(() => {
+    if (language && branch && !currentTranslation) {
+      dispatch(fetchTranslation(language));
+    }
+  }, [language, branch, currentTranslation]);
 
   return (
     <Grid

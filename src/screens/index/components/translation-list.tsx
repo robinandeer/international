@@ -12,18 +12,18 @@ import {
 
 import {
   selectScreen,
-  selectTranslationData,
   selectRefTranslation,
   selectRefLanguage,
   selectLanguage,
   selectScreenTranslationList,
+  selectCurrentTranslationData,
 } from "../../../redux/selectors";
 import { updateTranslationData } from "../../../redux/slices/data";
 
 const TranslationList: React.FC = () => {
   const dispatch = useDispatch();
   const screen = useSelector(selectScreen);
-  const data = useSelector(selectTranslationData);
+  const data = useSelector(selectCurrentTranslationData);
   const refTranslation = useSelector(selectRefTranslation);
   const refLanguage = useSelector(selectRefLanguage);
   const language = useSelector(selectLanguage);
@@ -39,7 +39,9 @@ const TranslationList: React.FC = () => {
         },
       };
 
-      dispatch(updateTranslationData(newData));
+      dispatch(
+        updateTranslationData({ languageCode: language, data: newData })
+      );
     },
     [data]
   );

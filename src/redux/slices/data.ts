@@ -5,19 +5,17 @@ import { AppThunk } from "../store";
 import { updateScreen } from "./config";
 
 interface DataState {
-  translation: TranslationApiResponse | null;
-  translationData: object | null;
-  refTranslation: TranslationApiResponse | null;
   saving: boolean;
   loadingTranslation: boolean;
+  translationMap: { [key: string]: TranslationApiResponse };
+  translationDataMap: { [key: string]: object };
 }
 
 const initialState: DataState = {
-  translation: null,
-  translationData: null,
-  refTranslation: null,
   saving: false,
   loadingTranslation: false,
+  translationMap: {},
+  translationDataMap: {},
 };
 
 const data = createSlice({
@@ -29,19 +27,26 @@ const data = createSlice({
     },
     updateTranslationSuccess(
       state,
-      action: PayloadAction<TranslationApiResponse>
+      action: PayloadAction<{
+        languageCode: string;
+        translation: TranslationApiResponse;
+      }>
     ) {
-      state.translation = action.payload;
       state.loadingTranslation = false;
+      state.translationMap[action.payload.languageCode] =
+        action.payload.translation;
+      state.translationDataMap[action.payload.languageCode] =
+        action.payload.translation.language;
     },
     updateTranslationFail(state) {
       state.loadingTranslation = false;
     },
-    updateTranslationData(state, action: PayloadAction<object>) {
-      state.translationData = action.payload;
-    },
-    updateRefTranslation(state, action: PayloadAction<TranslationApiResponse>) {
-      state.refTranslation = action.payload;
+    updateTranslationData(
+      state,
+      action: PayloadAction<{ languageCode: string; data: object }>
+    ) {
+      state.translationDataMap[action.payload.languageCode] =
+        action.payload.data;
     },
     updateSaving(state, action: PayloadAction<boolean>) {
       state.saving = action.payload;
@@ -54,7 +59,6 @@ export const {
   updateTranslationSuccess,
   updateTranslationFail,
   updateTranslationData,
-  updateRefTranslation,
   updateSaving,
 } = data.actions;
 
@@ -66,33 +70,28 @@ const getTranslation = async (
 ): Promise<TranslationApiResponse> => {
   const url = `/api/translations/${languageCode}?branch=${branchName}`;
   const response = await fetch(url);
-  const data = await response.json();
-  return data as TranslationApiResponse;
+  if (response.ok) {
+    const data = await response.json();
+    return data as TranslationApiResponse;
+  } else {
+    throw new Error("Unexpected error");
+  }
 };
 
-export const fetchRefTranslation = (): AppThunk => async (
+export const fetchTranslation = (languageCode: string): AppThunk => async (
   dispatch,
   getState
 ) => {
-  const {
-    config: { refLanguage, branch },
-  } = getState();
-  const translation = await getTranslation(refLanguage, branch);
-  dispatch(updateRefTranslation(translation));
-};
-
-export const fetchTranslation = (): AppThunk => async (dispatch, getState) => {
   dispatch(updateTranslationStart());
 
   const {
-    config: { language, branch, screen },
+    config: { branch, screen },
   } = getState();
 
   try {
-    const translation = await getTranslation(language, branch);
+    const translation = await getTranslation(languageCode, branch);
 
-    dispatch(updateTranslationSuccess(translation));
-    dispatch(updateTranslationData(translation.language));
+    dispatch(updateTranslationSuccess({ languageCode, translation }));
 
     if (!screen) {
       dispatch(updateScreen(Object.keys(translation.language)[0]));
@@ -108,10 +107,11 @@ export const saveTranslation = (): AppThunk => async (dispatch, getState) => {
 
   const {
     auth: { email },
-    config: { language, branch, refLanguage },
-    data: { translationData },
+    config: { language, branch },
+    data: { translationDataMap },
   } = getState();
 
+  const translationData = translationDataMap[language];
   const url = `/api/translations/${language}?branch=${branch}&email=${email}`;
   const response = await fetch(url, {
     method: "PUT",
@@ -123,11 +123,76 @@ export const saveTranslation = (): AppThunk => async (dispatch, getState) => {
   });
   const newTranslation = (await response.json()) as TranslationApiResponse;
 
-  dispatch(updateTranslationSuccess(newTranslation));
-
-  if (language === refLanguage) {
-    dispatch(updateRefTranslation(newTranslation));
-  }
+  dispatch(
+    updateTranslationSuccess({
+      languageCode: language,
+      translation: newTranslation,
+    })
+  );
 
   dispatch(updateSaving(false));
+};
+
+interface TranslationDataRequest {
+  languageCode: string;
+  promise: Promise<Response>;
+}
+
+interface TranslationDataResponse {
+  languageCode: string;
+  translation: TranslationApiResponse;
+}
+
+const processTranslationDataRequest = async (
+  request: TranslationDataRequest
+): Promise<TranslationDataResponse> => {
+  const response = await request.promise;
+  const newTranslation = (await response.json()) as TranslationApiResponse;
+  return {
+    languageCode: request.languageCode,
+    translation: newTranslation,
+  };
+};
+
+export const saveTranslations = (): AppThunk => async (dispatch, getState) => {
+  const {
+    auth: { email },
+    config: { branch },
+    data: { translationDataMap, translationMap },
+  } = getState();
+
+  const savePromises = Object.entries(translationDataMap)
+    .filter(
+      ([languageCode, translationData]) =>
+        JSON.stringify(translationData) !==
+        JSON.stringify(translationMap[languageCode])
+    )
+    .map(
+      ([languageCode, translationData]): TranslationDataRequest => {
+        const url = `/api/translations/${languageCode}?branch=${branch}&email=${email}`;
+        return {
+          languageCode,
+          promise: fetch(url, {
+            method: "PUT",
+            body: JSON.stringify(translationData),
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }),
+        };
+      }
+    )
+    .map(processTranslationDataRequest);
+
+  try {
+    const translationDataResponses = await Promise.all(savePromises);
+    translationDataResponses.forEach(payload => {
+      dispatch(updateTranslationSuccess(payload));
+    });
+  } catch (error) {
+    console.error(error);
+  }
+
+  dispatch(updateSaving(true));
 };

@@ -7,8 +7,12 @@ const getRequest = async (
   _req: NowRequest,
   res: NowResponse
 ): Promise<void> => {
-  const languages = await getLanguageCodes();
-  res.json({ languages });
+  try {
+    const languages = await getLanguageCodes();
+    res.json({ languages });
+  } catch (error) {
+    res.status(error.status).send(error.name);
+  }
 };
 
 const route = async (req: NowRequest, res: NowResponse): Promise<void> => {

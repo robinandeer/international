@@ -51,20 +51,27 @@ export const checkAuth = (): AppThunk => async dispatch => {
   if (email) {
     const branchName = emailToBranchName(email);
 
-    const response = await fetch(`/api/branches/${branchName}`);
-    if (!response.ok) {
-      await fetch("/api/branches", {
-        method: "POST",
-        body: JSON.stringify({ name: branchName }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-    }
+    try {
+      const response = await fetch(`/api/branches/${branchName}`);
 
-    dispatch(updateBranch(branchName));
-    dispatch(checkAuthSuccess(email));
+      if (!response.ok) {
+        await fetch("/api/branches", {
+          method: "POST",
+          body: JSON.stringify({ name: branchName }),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        });
+      }
+
+      dispatch(updateBranch(branchName));
+      dispatch(checkAuthSuccess(email));
+    } catch (error) {
+      console.error(error);
+      console.log("Unable to start app");
+      dispatch(checkAuthFailure());
+    }
   } else {
     dispatch(checkAuthFailure());
   }

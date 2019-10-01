@@ -9,7 +9,8 @@ const getRequest = async (req: NowRequest, res: NowResponse): Promise<void> => {
     const branch = await fetchBranch(branchName);
     res.json({ branch: branch });
   } catch (error) {
-    res.status(404).send("Branch not found");
+    console.error(error);
+    res.status(error.status).send(error.name);
   }
 };
 

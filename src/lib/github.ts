@@ -6,7 +6,10 @@ const OWNER = "robinandeer";
 const REPO_NAME = "international";
 const BASE_BRANCH_NAME = "master";
 
-const octokit = new Octokit({ auth: process.env.GITHUB_API_TOKEN });
+const octokit = new Octokit({
+  auth: process.env.GITHUB_API_TOKEN,
+  log: process.env.NODE_ENV !== "production" ? console : undefined,
+});
 
 const getBaseBranch = async (): Promise<Octokit.ReposGetBranchResponse> => {
   const { data } = await octokit.repos.getBranch({
@@ -37,7 +40,6 @@ export const fetchBranch = async (
     repo: REPO_NAME,
     branch,
   });
-
   return data;
 };
 
@@ -129,21 +131,27 @@ export const updateTranslation = async (
 
   if (!determineIfIsItemList(translationFile)) {
     const stringContent = JSON.stringify(updatedData, null, 2);
-    const { data } = await octokit.repos.createOrUpdateFile({
-      owner: OWNER,
-      repo: REPO_NAME,
-      path: filePath,
-      branch: branchName,
-      sha: translationFile.sha,
-      message: `Update ${languageCode} translations`,
-      content: Buffer.from(stringContent).toString("base64"),
-      committer: {
-        name: "Language Editor",
-        email,
-      },
-    });
+    try {
+      const { data } = await octokit.repos.createOrUpdateFile({
+        owner: OWNER,
+        repo: REPO_NAME,
+        path: filePath,
+        branch: branchName,
+        sha: translationFile.sha,
+        message: `Update ${languageCode} translations`,
+        content: Buffer.from(stringContent).toString("base64"),
+        committer: {
+          name: "Language Editor",
+          email,
+        },
+      });
 
-    return data;
+      return data;
+    } catch (error) {
+      console.error(error);
+      console.error(error.message);
+      throw error;
+    }
   }
 };
 

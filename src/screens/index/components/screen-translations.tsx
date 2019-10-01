@@ -18,12 +18,9 @@ const ScreenTranslations: React.FC = () => {
   const language = useSelector(selectLanguage);
   const loadingLanguage = useSelector(selectLoadingLanguage);
 
-  const handleClickLanguage = useCallback(
-    (languageCode: string): void => {
-      dispatch(updateLanguage(languageCode));
-    },
-    [languages]
-  );
+  const handleClickLanguage = useCallback((languageCode: string): void => {
+    dispatch(updateLanguage(languageCode));
+  }, []);
 
   return (
     <Box align="start">

@@ -12,17 +12,25 @@ const getRequest = async (req: NowRequest, res: NowResponse): Promise<void> => {
   const branchName = req.query.branch as string;
   const languageCode = req.query.language as LanguageCode;
 
-  let language;
-  if (branchName) {
-    language = await getRemoteTranslation(languageCode, branchName);
-  } else {
-    language = await getLocalTranslation(languageCode);
-  }
+  try {
+    let language;
+    if (branchName) {
+      console.log(
+        `GET /api/translations/${languageCode} | remote ${branchName}`
+      );
+      language = await getRemoteTranslation(languageCode, branchName);
+    } else {
+      console.log(`GET /api/translations/${languageCode} | local`);
+      language = await getLocalTranslation(languageCode);
+    }
 
-  if (language) {
-    res.json({ language });
-  } else {
-    res.status(404).send("Unknown language");
+    if (language) {
+      res.json({ language });
+    } else {
+      res.status(404).send("Unknown language");
+    }
+  } catch (error) {
+    res.status(error.status).send(error.name);
   }
 };
 
@@ -30,8 +38,15 @@ const putRequest = async (req: NowRequest, res: NowResponse): Promise<void> => {
   const branchName = req.query.branch as string;
   const languageCode = req.query.language as LanguageCode;
   const email = req.query.email as string;
-  await updateTranslation(languageCode, branchName, req.body, email);
-  getRequest(req, res);
+
+  try {
+    console.log(`PUT ${languageCode} | ${branchName} | ${email}`);
+    await updateTranslation(languageCode, branchName, req.body, email);
+    console.log(`PUT /api/translations/${languageCode} | get new translation`);
+    getRequest(req, res);
+  } catch (error) {
+    res.status(error.status).send(error.name);
+  }
 };
 
 const route = async (req: NowRequest, res: NowResponse): Promise<void> => {
