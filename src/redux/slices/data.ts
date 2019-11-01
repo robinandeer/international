@@ -9,6 +9,7 @@ interface DataState {
   loadingTranslation: boolean;
   translationMap: { [key: string]: TranslationApiResponse };
   translationDataMap: { [key: string]: object };
+  screenshots: { [key: string]: string[] };
 }
 
 const initialState: DataState = {
@@ -16,10 +17,11 @@ const initialState: DataState = {
   loadingTranslation: false,
   translationMap: {},
   translationDataMap: {},
+  screenshots: {},
 };
 
 const data = createSlice({
-  slice: "data",
+  name: "data",
   initialState,
   reducers: {
     updateTranslationStart(state) {

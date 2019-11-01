@@ -20,7 +20,7 @@ const initialState: ConfigState = {
 };
 
 const config = createSlice({
-  slice: "config",
+  name: "config",
   initialState,
   reducers: {
     updateLanguage(state, action: PayloadAction<string>) {

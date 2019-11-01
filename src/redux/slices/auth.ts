@@ -14,7 +14,7 @@ const initialState: AuthState = {
 };
 
 const auth = createSlice({
-  slice: "auth",
+  name: "auth",
   initialState,
   reducers: {
     checkAuthSuccess(state, action: PayloadAction<string>) {
