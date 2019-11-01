@@ -1,11 +1,63 @@
 {
   "welcome": {
-    "welcomeLabel": "Välkommen",
-    "welcomeDescription": "Logga in för att hantera dina kort se din köp.",
+    "welcomeLabel": "Välkommen till First Card!",
+    "welcomeDescription": "Logga in för att hantera ditt kort och se dina köp.",
     "signInButton": "Logga in"
   },
-  "cards": {
-    "screenTitle": "",
-    "blockButton": ""
+  "home": {
+    "screenTitle": "Hej {{firstName}}",
+    "screenTitleLabel": "Mitt First Card"
+  },
+  "purchases": {
+    "screenTitle": "Mina köp",
+    "invoicedLastMonthLabel": "Fakturerat senaste månaden",
+    "totalUnInvoicedLabel": "Ofakturerat belopp"
+  },
+  "card": {
+    "screenTitle": "Hantera kort",
+    "applePayTitle": "Aktivera Apple Pay",
+    "applePayDescription": "Betala med din iPhone i butiker",
+    "pushNotificationsTitle": "Köpnotiser",
+    "pushNotificationsDescription": "Notifiera mig när ett köp eller uttag har gjorts.",
+    "softBlockTitle": "Stäng kortet",
+    "softBlockDescription": "Stäng ditt kort tillfälligt",
+    "geoBlockingTitle": "Geografisk blockering",
+    "geoBlockingDescription": "Blockera kortköp och uttag i specifika områden",
+    "insurancesTitle": "Försäkringar",
+    "insurancesDescription": "Lär dig mer om vad din försäkring täcker"
+  },
+  "contactUs": {
+    "screenTitle": "Kontakta oss",
+    "customerServiceTitle": "Kundservice",
+    "sendMessageTitle": "Skicka oss ett meddelande",
+    "faqTitle": "Vanliga frågor",
+    "blockCardTitle": "Spärra och avsluta kortet",
+    "blockCardDescription": "Ring oss, öppet dygnet runt"
+  },
+  "more": {
+    "screenTitle": "Mer",
+    "aboutHeading": "Om First Card",
+    "aboutAppTitle": "Om appen",
+    "showIntroTitle": "Visa introduktionen igen",
+    "logOutButton": "Logga ut"
+  },
+  "global": {
+    "countryDK": "Danmark",
+    "countrySE": "Sverige",
+    "countryFI": "Finland",
+    "countryNO": "Norge"
+  },
+  "settings": {
+    "onlinePurchaseTitle": "Kortköp på internet",
+    "onlinePurchaseDescription": "Slå på i 60 minuter",
+    "pinDisplayTitle": "Visa PIN-kod",
+    "pinDisplayDescription": "Tryck för att see din pinkod"
+  },
+  "navigation": {
+    "homeTabBarLabel": "Hem",
+    "purchasesTabBarLabel": "Köp",
+    "cardTabBarLabel": "Kort",
+    "supportTabBarLabel": "Support",
+    "moreTabBarLabel": "Mer"
   }
 }

@@ -1,11 +1,63 @@
 {
   "welcome": {
-    "welcomeLabel": "Welcome",
-    "welcomeDescription": "Sign in to manage your cards and see your transactions.",
-    "signInButton": "Sign in"
+    "welcomeLabel": "Welcome to First Card!",
+    "welcomeDescription": "Login to manage your card and see your transactions.",
+    "signInButton": "Log in"
   },
-  "cards": {
-    "screenTitle": "Cards",
-    "blockButton": "Block card"
+  "home": {
+    "screenTitle": "Hello {{firstName}}",
+    "screenTitleLabel": "My First Card"
+  },
+  "purchases": {
+    "screenTitle": "My purchases",
+    "invoicedLastMonthLabel": "Invoiced last month",
+    "totalUnInvoicedLabel": "Total uninvoiced"
+  },
+  "card": {
+    "screenTitle": "Manage card",
+    "applePayTitle": "Activate Apple Pay",
+    "applePayDescription": "Pay with your iPhone in stores",
+    "pushNotificationsTitle": "Purchase notifications",
+    "pushNotificationsDescription": "Notify me when a purchase is made",
+    "softBlockTitle": "Disable card",
+    "softBlockDescription": "Close your card temporarily",
+    "geoBlockingTitle": "Geographical blocking",
+    "geoBlockingDescription": "Block your card in specific regions",
+    "insurancesTitle": "Insurances",
+    "insurancesDescription": "Learn more about what your insurance covers"
+  },
+  "contactUs": {
+    "screenTitle": "Contact us",
+    "customerServiceTitle": "Customer service",
+    "sendMessageTitle": "Send us a message",
+    "faqTitle": "Frequently asked questions",
+    "blockCardTitle": "Block card",
+    "blockCardDescription": "Call us, open 24/7"
+  },
+  "more": {
+    "screenTitle": "More",
+    "aboutHeading": "About",
+    "aboutAppTitle": "About the app",
+    "showIntroTitle": "Show introduction again",
+    "logOutButton": "Log out"
+  },
+  "global": {
+    "countryDK": "Denmark",
+    "countrySE": "Sweden",
+    "countryFI": "Finland",
+    "countryNO": "Norway"
+  },
+  "settings": {
+    "onlinePurchaseTitle": "Online Purchases",
+    "onlinePurchaseDescription": "Enable for 60 minutes",
+    "pinDisplayTitle": "Show PIN code",
+    "pinDisplayDescription": "Tap to see your card pin"
+  },
+  "navigation": {
+    "homeTabBarLabel": "Home",
+    "purchasesTabBarLabel": "Purchases",
+    "cardTabBarLabel": "Card",
+    "supportTabBarLabel": "Support",
+    "moreTabBarLabel": "More"
   }
 }
