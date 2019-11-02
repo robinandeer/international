@@ -1,0 +1,63 @@
+{
+  "welcome": {
+    "welcomeLabel": "",
+    "welcomeDescription": "",
+    "signInButton": ""
+  },
+  "home": {
+    "screenTitle": "",
+    "screenTitleLabel": ""
+  },
+  "purchases": {
+    "screenTitle": "",
+    "invoicedLastMonthLabel": "",
+    "totalUnInvoicedLabel": ""
+  },
+  "card": {
+    "screenTitle": "",
+    "applePayTitle": "",
+    "applePayDescription": "",
+    "pushNotificationsTitle": "",
+    "pushNotificationsDescription": "",
+    "softBlockTitle": "",
+    "softBlockDescription": "",
+    "geoBlockingTitle": "",
+    "geoBlockingDescription": "",
+    "insurancesTitle": "",
+    "insurancesDescription": ""
+  },
+  "contactUs": {
+    "screenTitle": "",
+    "customerServiceTitle": "",
+    "sendMessageTitle": "",
+    "faqTitle": "",
+    "blockCardTitle": "",
+    "blockCardDescription": ""
+  },
+  "more": {
+    "screenTitle": "",
+    "aboutHeading": "",
+    "aboutAppTitle": "",
+    "showIntroTitle": "",
+    "logOutButton": ""
+  },
+  "global": {
+    "countryDK": "",
+    "countrySE": "",
+    "countryFI": "",
+    "countryNO": ""
+  },
+  "settings": {
+    "onlinePurchaseTitle": "",
+    "onlinePurchaseDescription": "",
+    "pinDisplayTitle": "",
+    "pinDisplayDescription": ""
+  },
+  "navigation": {
+    "homeTabBarLabel": "",
+    "purchasesTabBarLabel": "",
+    "cardTabBarLabel": "",
+    "supportTabBarLabel": "",
+    "moreTabBarLabel": ""
+  }
+}
