@@ -48,52 +48,59 @@ const TranslationList: React.FC = () => {
 
   if (screenTranslationList && data && refTranslation) {
     return (
-      <Table
-        style={{
-          width: "100%",
-          background: "rgba(255, 255, 255, 0.05)",
-          borderRadius: 8,
-        }}
+      <Box
+        width="100%"
+        flex
+        overflow={{ vertical: "auto" }}
+        pad={{ horizontal: "small" }}
       >
-        <TableBody>
-          {screenTranslationList.map(key => (
-            <TableRow
-              key={key}
-              style={{
-                borderBottomColor: "#131227",
-                borderBottomWidth: 3,
-                borderBottomStyle: "solid",
-              }}
-            >
-              <TableCell size="small">
-                <Text size="small" textAlign="end" style={{ width: "100%" }}>
-                  {key}
-                </Text>
-              </TableCell>
-              <TableCell>
-                <Box fill pad={{ vertical: "xsmall" }}>
-                  {language !== refLanguage && (
-                    <Text
-                      size="small"
-                      color="placeholder"
-                      margin={{ bottom: "xxsmall" }}
-                    >
-                      {refTranslation.language[screen][key]}
-                    </Text>
-                  )}
-                  <TextInput
-                    style={{ width: "100%" }}
-                    value={data[screen][key]}
-                    onChange={({ target: { value } }): void =>
-                      handleChangeTranslationData(screen, key, value)
-                    }
-                  />
-                </Box>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+        <Table
+          style={{
+            width: "100%",
+            background: "rgba(255, 255, 255, 0.05)",
+            borderRadius: 8,
+          }}
+        >
+          <TableBody>
+            {screenTranslationList.map(key => (
+              <TableRow
+                key={key}
+                style={{
+                  borderBottomColor: "#131227",
+                  borderBottomWidth: 3,
+                  borderBottomStyle: "solid",
+                }}
+              >
+                <TableCell size="small">
+                  <Text size="small" textAlign="end" style={{ width: "100%" }}>
+                    {key}
+                  </Text>
+                </TableCell>
+                <TableCell>
+                  <Box fill pad={{ vertical: "xsmall" }}>
+                    {language !== refLanguage && (
+                      <Text
+                        size="small"
+                        color="placeholder"
+                        margin={{ bottom: "xxsmall" }}
+                      >
+                        {refTranslation.language[screen][key]}
+                      </Text>
+                    )}
+                    <TextInput
+                      style={{ width: "100%" }}
+                      value={data[screen][key]}
+                      onChange={({ target: { value } }): void =>
+                        handleChangeTranslationData(screen, key, value)
+                      }
+                    />
+                  </Box>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Box>
     );
   } else {
     return null;

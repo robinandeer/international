@@ -23,13 +23,15 @@ const ScreenTranslations: React.FC = () => {
   }, []);
 
   return (
-    <Box align="start">
+    <Box align="start" pad={{ vertical: "medium" }}>
       <Box
         width="100%"
         direction="row"
         align="center"
         justify="between"
         margin={{ bottom: "small" }}
+        flex={{ grow: 0, shrink: 0 }}
+        pad={{ horizontal: "small" }}
       >
         <Box direction="row" align="center">
           {languages.map(languageCode => (

@@ -48,7 +48,7 @@ const IndexScreen: NextPage = () => {
       <Box pad={{ horizontal: "small", vertical: "medium" }}>
         <Sidebar />
       </Box>
-      <Box pad={{ horizontal: "small", vertical: "medium" }}>
+      <Box>
         <ScreenTranslations />
       </Box>
       <Box pad={{ horizontal: "small", vertical: "medium" }}>
