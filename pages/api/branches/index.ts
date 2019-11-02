@@ -24,6 +24,7 @@ const postRequest = async (
     const branch = await createBranch(name);
     res.json({ branch });
   } catch (error) {
+    console.error(error);
     res.status(error.status).send(error.name);
   }
 };

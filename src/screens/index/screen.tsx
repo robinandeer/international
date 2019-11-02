@@ -43,18 +43,16 @@ const IndexScreen: NextPage = () => {
   return (
     <Grid
       style={{ height: "100vh", width: "100vw" }}
-      columns={["small", "flex"]}
+      columns={["small", "flex", "1/3"]}
     >
       <Box pad={{ horizontal: "small", vertical: "medium" }}>
         <Sidebar />
       </Box>
-      <Box pad={{ vertical: "medium", right: "medium" }}>
-        <Box style={{ flex: 1 }} margin={{ bottom: "medium" }}>
-          <Screenshots />
-        </Box>
-        <Box style={{ flex: 1, flexShrink: 0 }}>
-          <ScreenTranslations />
-        </Box>
+      <Box pad={{ horizontal: "small", vertical: "medium" }}>
+        <ScreenTranslations />
+      </Box>
+      <Box pad={{ horizontal: "small", vertical: "medium" }}>
+        <Screenshots />
       </Box>
     </Grid>
   );

@@ -46,7 +46,6 @@ export const fetchBranch = async (
 export const createBranch = async (
   name?: string
 ): Promise<Octokit.GitCreateRefResponse> => {
-  console.log(name);
   const baseBranch = await getBaseBranch();
 
   let branchName;
