@@ -22,8 +22,3 @@ export interface Screenshot {
 export interface ScreenshotsApiResponse {
   screenshots: Screenshot[];
 }
-
-export enum LanguageCode {
-  sv = "sv",
-  en = "en",
-}

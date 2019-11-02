@@ -1,7 +1,5 @@
-import { LanguageCode } from "./types";
-
 export async function getLocalTranslation(
-  code: LanguageCode
+  code: string
 ): Promise<object | null> {
   try {
     const data: { default: object } = await import(

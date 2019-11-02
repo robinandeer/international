@@ -1,6 +1,6 @@
 import Octokit from "@octokit/rest";
 
-import { LanguageCode, Screenshot } from "../../src/types";
+import { Screenshot } from "../../src/types";
 
 const OWNER = "robinandeer";
 const REPO_NAME = "international";
@@ -95,7 +95,7 @@ export const getLanguageCodes = async (): Promise<string[]> => {
 };
 
 export const getTranslation = async (
-  languageCode: LanguageCode,
+  languageCode: string,
   branchName: string
 ): Promise<object> => {
   const filePath = `translations/${languageCode}.json`;
@@ -115,7 +115,7 @@ export const getTranslation = async (
 };
 
 export const updateTranslation = async (
-  languageCode: LanguageCode,
+  languageCode: string,
   branchName: string,
   updatedData: object,
   email: string

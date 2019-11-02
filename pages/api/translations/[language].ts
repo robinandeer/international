@@ -1,6 +1,5 @@
 import { NowRequest, NowResponse } from "@now/node";
 
-import { LanguageCode } from "../../../src/types";
 import {
   getTranslation as getRemoteTranslation,
   updateTranslation,
@@ -10,7 +9,7 @@ import cors from "../../../src/cors";
 
 const getRequest = async (req: NowRequest, res: NowResponse): Promise<void> => {
   const branchName = req.query.branch as string;
-  const languageCode = req.query.language as LanguageCode;
+  const languageCode = req.query.language as string;
 
   try {
     let language;
@@ -36,7 +35,7 @@ const getRequest = async (req: NowRequest, res: NowResponse): Promise<void> => {
 
 const putRequest = async (req: NowRequest, res: NowResponse): Promise<void> => {
   const branchName = req.query.branch as string;
-  const languageCode = req.query.language as LanguageCode;
+  const languageCode = req.query.language as string;
   const email = req.query.email as string;
 
   try {
