@@ -1,9 +1,4 @@
 {
-  "welcome": {
-    "welcomeLabel": "Välkommen till First Card!",
-    "welcomeDescription": "Logga in för att hantera ditt kort och se dina köp.",
-    "signInButton": "Logga in"
-  },
   "home": {
     "screenTitle": "Hej {{firstName}}",
     "screenTitleLabel": "Mitt First Card"
@@ -12,19 +7,6 @@
     "screenTitle": "Mina köp",
     "invoicedLastMonthLabel": "Fakturerat senaste månaden",
     "totalUnInvoicedLabel": "Ofakturerat belopp"
-  },
-  "card": {
-    "screenTitle": "Hantera kort",
-    "applePayTitle": "Aktivera Apple Pay",
-    "applePayDescription": "Betala med din iPhone i butiker",
-    "pushNotificationsTitle": "Köpnotiser",
-    "pushNotificationsDescription": "Notifiera mig när ett köp eller uttag har gjorts.",
-    "softBlockTitle": "Stäng kortet",
-    "softBlockDescription": "Stäng ditt kort tillfälligt",
-    "geoBlockingTitle": "Geografisk blockering",
-    "geoBlockingDescription": "Blockera kortköp och uttag i specifika områden",
-    "insurancesTitle": "Försäkringar",
-    "insurancesDescription": "Lär dig mer om vad din försäkring täcker"
   },
   "contactUs": {
     "screenTitle": "Kontakta oss",
@@ -59,5 +41,23 @@
     "cardTabBarLabel": "Kort",
     "supportTabBarLabel": "Support",
     "moreTabBarLabel": "Mer"
+  },
+  "card": {
+    "applePayTitle": "Aktivera Apple Pay",
+    "applePayDescription": "Betala med din iPhone i butiker",
+    "pushNotificationsTitle": "Köpnotiser",
+    "pushNotificationsDescription": "Notifiera mig när ett köp eller uttag har gjorts.",
+    "softBlockTitle": "Stäng kortet",
+    "softBlockDescription": "Stäng ditt kort tillfälligt",
+    "geoBlockingTitle": "Geografisk blockering",
+    "geoBlockingDescription": "Blockera kortköp och uttag i specifika områden",
+    "insurancesTitle": "Försäkringar",
+    "insurancesDescription": "Lär dig mer om vad din försäkring täcker",
+    "screenTitle": "Hantera kort"
+  },
+  "welcome": {
+    "welcomeDescription": "Logga in för att hantera ditt kort och se dina köp.",
+    "signInButton": "Logga in",
+    "welcomeLabel": "Välkommen"
   }
 }
