@@ -1,0 +1,28 @@
+{
+  "customerServicePhoneNumber": {
+    "fi": "+35820333",
+    "se": "+46771407170"
+  },
+  "cardBlockPhoneNumber": {
+    "fi": "+35820052100",
+    "se": "+46771407170"
+  },
+  "languages": {
+    "fi": ["fi", "en", "sv-FI"],
+    "se": ["se", "en"]
+  },
+  "activeFeatures": {
+    "fi": [
+      "CARD_ACTIVATION",
+      "APPLE_PAY",
+      "BIOMETRIC_LOGIN"
+    ],
+    "se": [
+      "SOFT_BLOCKING",
+      "GEO_BLOCKING",
+      "CARD_ACTIVATION",
+      "APPLE_PAY",
+      "BIOMETRIC_LOGIN"
+    ]
+  }
+}

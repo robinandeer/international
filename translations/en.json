@@ -45,7 +45,11 @@
     "countryDK": "Denmark",
     "countrySE": "Sweden",
     "countryFI": "Finland",
-    "countryNO": "Norway"
+    "countryNO": "Norway",
+    "websiteUrl": "https://www.firstcardonline.com/",
+    "supportUrl": "https://www.firstcardonline.com/support/",
+    "insuranceUrl": "https://www.firstcardonline.com/insurance/",
+    "benefitsUrl": "https://www.firstcardonline.com/features/#offers-and-discounts"
   },
   "settings": {
     "onlinePurchaseTitle": "Online Purchases",

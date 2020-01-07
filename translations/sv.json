@@ -27,7 +27,11 @@
     "countryDK": "Danmark",
     "countrySE": "Sverige",
     "countryFI": "Finland",
-    "countryNO": "Norge"
+    "countryNO": "Norge",
+    "websiteUrl": "https://www.firstcardonline.com/sv/",
+    "supportUrl": "https://www.firstcardonline.com/sv/support/",
+    "insuranceUrl": "https://www.firstcardonline.com/se/formaner/",
+    "benefitsUrl": "https://www.firstcardonline.com/se/formanerna-gor-first-card-annu-mer-vardefullt/"
   },
   "settings": {
     "onlinePurchaseTitle": "Kortköp på internet",
