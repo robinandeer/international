@@ -1,67 +1,194 @@
 {
-  "home": {
-    "screenTitle": "Hej {{firstName}}",
-    "screenTitleLabel": "Mitt First Card"
+  "welcomeScreen": {
+    "welcomeLabel": "Välkommen till First Card!",
+    "welcomeDescription": "Logga in för att hantera ditt kort och se dina köp.",
+    "loginButton": "Logga in",
+    "loginErrorHeading": "Det gick inte att logga in",
+    "loginErrorDescription": "Det verkar tyvärr som du inte är kund hos First Card",
+    "loginErrorButton": "Försök logga in igen"
   },
-  "purchases": {
-    "screenTitle": "Mina köp",
-    "invoicedLastMonthLabel": "Fakturerat senaste månaden",
-    "totalUnInvoicedLabel": "Ofakturerat belopp"
+  "homeScreen": {
+    "aboveTitleLabel": "Mitt First Card",
+    "title": "Välkommen",
+    "latestInvoiceTitle": "Senaste faktura",
+    "latestPurchasesTitle": "Senaste köp",
+    "showAllTransactionsButton": "Visa alla",
+    "quickSettingsTitle": "Snabbinställningar"
   },
-  "contactUs": {
-    "screenTitle": "Kontakta oss",
-    "customerServiceTitle": "Kundservice",
-    "sendMessageTitle": "Skicka oss ett meddelande",
-    "faqTitle": "Vanliga frågor",
-    "blockCardTitle": "Spärra och avsluta kortet",
-    "blockCardDescription": "Ring oss, öppet dygnet runt"
+  "activateCardModal": {
+    "title": "Nytt kort!",
+    "description": "Ett nytt kort har skickats till dig, aktivera det när det kommit fram.",
+    "button": "Aktivera kort",
+    "notActivatedBadge": "Deaktiverat",
+    "successTitle": "Ditt kort har aktiverats",
+    "successDescription": "Ditt gamla kort kan inte användas längre och ska slängas."
   },
-  "more": {
-    "screenTitle": "Mer",
-    "aboutHeading": "Om First Card",
-    "aboutAppTitle": "Om appen",
-    "showIntroTitle": "Visa introduktionen igen",
-    "logOutButton": "Logga ut"
+  "applePayModal": {
+    "title": "Apple Pay",
+    "description": "Lägg till ditt kort till Apple Pay och betala med telefonen Gör säkra betalningar i butiker, appar och på webben. with your phone in stores.",
+    "button": "Skaffa Apple Pay",
+    "disclaimer": "Apple Pay tillhandahålls av Apple® och köp tillhandahålls av Mastercard®."
+  },
+  "onboardingScreen": {
+    "closeButton": "Stäng",
+    "nextButton": "Nästa",
+    "skipButton": "Hoppa över",
+    "lookTitle": "Ser vi annourlunda ut?",
+    "lookDescription": "First Card appen har ett nytt utseende. Oroa dig inte, du kan fortfarande komma åt samma information. Navigera med ikonerna längst ner.",
+    "purchasesTitle": "Håll koll på dina köp",
+    "purchasesDescription": "Få en enkel översikt av dina köp och fakturor. Hantera dina kort och skydda dig från kortbedrägeri.",
+    "faceIdTitle": "Använd Face ID",
+    "faceIdDescription": "Använd Face ID för att låsa upp appen säkert och enkelt.",
+    "faceIdButton": "Använd Face ID"
+  },
+  "purchasesScreen": {
+    "title": "Köp",
+    "monthTab": "Månad",
+    "invoiceTab": "Faktura",
+    "monthCardAmountLabel": "Månadssumma",
+    "noMorePurchasesLabel": "Inga fler köp att visa",
+    "monthEmptyStateTitle": "Inga köp",
+    "monthEmptyStateDescription": "Vi hittar inga köp för det här kortet.",
+    "invoiceEmptyStateTitle": "Inga fakturor",
+    "invoiceEmptyStateDescription": "Vi hittar inga fakturor för det här kortet."
+  },
+  "searchPurchasesScreen": {
+    "inputPlaceholder": "Sök köp",
+    "closeButton": "Avbryt",
+    "emptyStateTitle": "Sök efter köp på alla kort",
+    "emptyStateCaption": "Du kan söka på köpställe och belopp",
+    "errorTitle": "Kunde inte hitta några köp",
+    "errorCaption": "Kom ihåg att söka på köpställe eller belopp"
+  },
+  "purchaseScreen": {
+    "locationCaption": "Köpställe",
+    "vatCaption": "Momsbelopp",
+    "currencyCaption": "Valuta",
+    "exchangeRateCaption": "Växlingskurs",
+    "cardCaption": "Använt kort"
+  },
+  "cardsScreen": {
+    "title": "Hantera kort",
+    "settingsSectionTitle": "Kortinställningar",
+    "securitySectionTitle": "Säkerhetsalternativ",
+    "aboutSectionTitle": "Om kortet",
+    "softBlockTitle": "Stäng kortet",
+    "softBlockCaption": "Stäng ditt kort tillfälligt",
+    "geoBlockingTitle": "Köpregioner",
+    "geoBlockingCaption": "Blockera kortköp och uttag i specifika områden",
+    "detailsTitle": "Kortdetaljer",
+    "detailsNameCaption": "Namn på kortet",
+    "detailsCompanyCaption": "Företagsnamn",
+    "detailsEmailCaption": "E-postadress",
+    "blockedCardMessageTitle": "Inga tillgängliga inställningar",
+    "blockedCardMessageCaption": "Du kan inte hantera ett kort som är blockerat."
+  },
+  "purchaseRegionsScreen": {
+    "title": "Köpregioner",
+    "allToggleTitle": "Alla länder",
+    "allToggleCaption": "Aktivera köp i butik och uttag utanför {{country}}",
+    "alwaysEnabledLabel": "Alltid aktiverat",
+    "regionNordics": "Nordiska länder",
+    "regionEurope": "Europa",
+    "regionAfrica": "Afrika",
+    "regionAsia": "Asien",
+    "regionNorthAmerica": "Nordamerika",
+    "regionSouthAmerica": "Sydamerika",
+    "regionOceania": "Oceanien"
+  },
+  "supportScreen": {
+    "title": "Support",
+    "supportSectionTitle": "Support och frågor",
+    "blockSectionTitle": "Blockera kort",
+    "insuranceSectionTitle": "Pågående försäkringsärenden",
+    "customerServiceOptionTitle": "Personlig service",
+    "customerServiceOptionCaption": "Ring oss, öppet Mån—Fre 8—17",
+    "messageOptionTitle": "Meddelanden",
+    "messageOptionCaption": "Vi svarar inom 24 timmar",
+    "faqOptionTitle": "Vanliga frågor",
+    "falckSecureOptionTitle": "Falck Secure",
+    "falckSecureOptionCaption": "Utifall du har blockeringstjänst från Falck Secure",
+    "messageNotificationTitle": "Nytt meddelande!"
+  },
+  "messagesScreen": {
+    "title": "Meddelanden",
+    "newMessageOptionLabel": "Skicka nytt meddelande",
+    "newMessageTopicTitle": "Vad handlar ditt meddelande om?",
+    "newMessageTopicInvoice": "Faktura",
+    "newMessageTopicLimit": "Köpgräns",
+    "newMessageTopicReplacement": "Ersättningskort",
+    "newMessageTopicCancelCard": "Avbeställ mitt kort",
+    "newMessageTopicOther": "Andra problem",
+    "newMessageCardTitle": "Vilket kort gäller det?",
+    "messageInputPlaceholder": "Skriv ditt meddelande här..."
+  },
+  "moreScreen": {
+    "title": "Mer",
+    "settingsSectionTitle": "Inställningar",
+    "aboutSectionTitle": "Om First Card",
+    "commentSectionTitle": "Kommentera",
+    "pushNotificationOptionTitle": "Köpnotifikationer",
+    "pushNotificationOptionCaption": "Meddela mig när ett köp görs",
+    "languageOptionTitle": "Språk",
+    "insuranceOptionTitle": "Försäkringar",
+    "benefitsOptionTitle": "Erbjudanden",
+    "dataSecurityOptionTitle": "Data och säkerhet",
+    "introductionOptionTitle": "Visa introduktionen igen",
+    "feedbackOptionTitle": "Ge oss feedback",
+    "rateUsOptionTitle": "Betygsätt oss",
+    "logoutButton": "Logga ut",
+    "language-sv-SE": "Svenska",
+    "language-sv-FI": "Finlandssvenska",
+    "language-fi-FI": "Finska",
+    "language-da-DK": "Danska",
+    "language-nb-NO": "Norska",
+    "language-en": "Engelska"
+  },
+  "options": {
+    "onlinePurchaseTitle": "Online-köp",
+    "onlinePurchaseNotActiveCaption": "Aktivera i 60 minuter",
+    "onlinePurchaseActiveCaption": "Aktiverad",
+    "pinDisplayTitle": "Visa PIN-kod",
+    "pinDisplayCaption": "Tryck för att sin din PIN-kod",
+    "faceIdTitle": "Aktivera Face ID",
+    "faceIdCaption": "Lås upp appen med Face ID",
+    "touchIdTitle": "Aktivera Touch ID",
+    "touchIdCaption": "Lås upp appen med Touch ID",
+    "applePayTitle": "Aktivera Apple Pay",
+    "applePayCaption": "Betala med din iPhone i butiker, appar och på webben",
+    "blockCardTitle": "Blockera kortet",
+    "blockCardCaption": "Ring oss, öppet 24/7"
   },
   "global": {
     "countryDK": "Danmark",
     "countrySE": "Sverige",
     "countryFI": "Finland",
     "countryNO": "Norge",
-    "websiteUrl": "https://www.firstcardonline.com/sv/",
-    "supportUrl": "https://www.firstcardonline.com/sv/support/",
+    "websiteUrl": "https://www.firstcardonline.com/se/",
+    "supportUrl": "https://www.firstcardonline.com/se/support/",
     "insuranceUrl": "https://www.firstcardonline.com/se/formaner/",
-    "benefitsUrl": "https://www.firstcardonline.com/se/formanerna-gor-first-card-annu-mer-vardefullt/"
-  },
-  "settings": {
-    "onlinePurchaseTitle": "Kortköp på internet",
-    "onlinePurchaseDescription": "Slå på i 60 minuter",
-    "pinDisplayTitle": "Visa PIN-kod",
-    "pinDisplayDescription": "Tryck för att see din pinkod"
+    "benefitsUrl": "https://www.firstcardonline.com/se/formanerna-gor-first-card-annu-mer-vardefullt/",
+    "shortCardTypeCorporate": "Företagkort",
+    "longCardTypeCorporate": "First Card Företagkort",
+    "cardDisplayName": "Slutar med {{lastDigits}}",
+    "cardBlockedLabel": "Kortet är blockerat",
+    "shortCardTypeTravel": "Resekort",
+    "longCardTypeTravel": "Resekort",
+    "transactionBadgeUpcoming": "Kommande",
+    "transactionBadgeReserved": "Reserverad",
+    "invoiceBadgePaid": "Betald",
+    "upcomingInvoiceLabel": "Kommande faktura",
+    "upcomingInvoiceCardHeaderLabel": "Nuvarande belopp",
+    "upcomingInvoiceCardHeaderCaption": "Att faktureras",
+    "invoiceCardTitle": "Faktura {{number}}",
+    "invoiceCardHeaderLabel": "Total summa",
+    "invoiceCardHeaderCaption": "Fakturerad {{date}}"
   },
   "navigation": {
-    "homeTabBarLabel": "Hem",
-    "purchasesTabBarLabel": "Köp",
-    "cardTabBarLabel": "Kort",
-    "supportTabBarLabel": "Support",
-    "moreTabBarLabel": "Mer"
-  },
-  "card": {
-    "applePayTitle": "Aktivera Apple Pay",
-    "applePayDescription": "Betala med din iPhone i butiker",
-    "pushNotificationsTitle": "Köpnotiser",
-    "pushNotificationsDescription": "Notifiera mig när ett köp eller uttag har gjorts.",
-    "softBlockTitle": "Stäng kortet",
-    "softBlockDescription": "Stäng ditt kort tillfälligt",
-    "geoBlockingTitle": "Geografisk blockering",
-    "geoBlockingDescription": "Blockera kortköp och uttag i specifika områden",
-    "insurancesTitle": "Försäkringar",
-    "insurancesDescription": "Lär dig mer om vad din försäkring täcker",
-    "screenTitle": "Hantera kort"
-  },
-  "welcome": {
-    "welcomeDescription": "Logga in för att hantera ditt kort och se dina köp.",
-    "signInButton": "Logga in",
-    "welcomeLabel": "Välkommen"
+    "homeTabLabel": "Hem",
+    "purchasesTabLabel": "Köp",
+    "cardsTabLabel": "Kort",
+    "supportTabLabel": "Support",
+    "moreTabLabel": "Mera"
   }
 }

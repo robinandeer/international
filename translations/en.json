@@ -1,45 +1,163 @@
 {
-  "welcome": {
+  "welcomeScreen": {
     "welcomeLabel": "Welcome to First Card!",
     "welcomeDescription": "Login to manage your card and see your transactions.",
-    "signInButton": "Log in"
+    "loginButton": "Log in",
+    "loginErrorHeading": "Not able to log in",
+    "loginErrorDescription": "Unfortunately you don't seem to be a First Card customer",
+    "loginErrorButton": "Try to log in again"
   },
-  "home": {
-    "screenTitle": "Hello {{firstName}}",
-    "screenTitleLabel": "My First Card"
+  "homeScreen": {
+    "aboveTitleLabel": "My First Card",
+    "title": "Welcome",
+    "latestInvoiceTitle": "Latest invoice",
+    "latestPurchasesTitle": "Latest purchases",
+    "showAllTransactionsButton": "Show all",
+    "quickSettingsTitle": "Quick settings"
   },
-  "purchases": {
-    "screenTitle": "My purchases",
-    "invoicedLastMonthLabel": "Invoiced last month",
-    "totalUnInvoicedLabel": "Total uninvoiced"
+  "activateCardModal": {
+    "title": "New card!",
+    "description": "A new card has been sent to you, activate it when you have received it.",
+    "button": "Activate card",
+    "notActivatedBadge": "Not activated",
+    "successTitle": "Your card has been activated",
+    "successDescription": "Your old card can no longer be used and should be thrown away."
   },
-  "card": {
-    "screenTitle": "Manage card",
-    "applePayTitle": "Activate Apple Pay",
-    "applePayDescription": "Pay with your iPhone in stores",
-    "pushNotificationsTitle": "Purchase notifications",
-    "pushNotificationsDescription": "Notify me when a purchase is made",
+  "applePayModal": {
+    "title": "Apple Pay",
+    "description": "Connect to Apple Pay and pay with your phone in stores.",
+    "button": "Connect to Apple Pay",
+    "disclaimer": "Apple Pay is provided by Apple® och payment services are provided by Mastercard®."
+  },
+  "onboardingScreen": {
+    "closeButton": "Close",
+    "nextButton": "Next",
+    "skipButton": "Skip for now",
+    "lookTitle": "Do we look different?",
+    "lookDescription": "First Card app has a new look. Don’t worry, you can still access the same information. Use the icons in the bottom to navigate.",
+    "purchasesTitle": "Keep track of your purchases",
+    "purchasesDescription": "Get an easy overview of your transactions and invoices. Manage your card and protect it against fraud.",
+    "faceIdTitle": "Use Face ID",
+    "faceIdDescription": "Enable Face ID to unlock the app securely and easily.",
+    "faceIdButton": "Enable Face ID"
+  },
+  "purchasesScreen": {
+    "title": "Purchases",
+    "monthTab": "Month",
+    "invoiceTab": "Invoice",
+    "monthCardAmountLabel": "Month total",
+    "noMorePurchasesLabel": "No more purchases to show",
+    "monthEmptyStateTitle": "No purchases",
+    "monthEmptyStateDescription": "We can't find any purchases made with this card.",
+    "invoiceEmptyStateTitle": "No invoices",
+    "invoiceEmptyStateDescription": "We can't find any invoices related to this card."
+  },
+  "searchPurchasesScreen": {
+    "inputPlaceholder": "Search purchase",
+    "closeButton": "Cancel",
+    "emptyStateTitle": "Search for all card purchases",
+    "emptyStateCaption": "You can search by location or amount",
+    "errorTitle": "Couldn't find any purchases",
+    "errorCaption": "Remember to search by location or amount"
+  },
+  "purchaseScreen": {
+    "locationCaption": "Purchase location",
+    "vatCaption": "VAT amount",
+    "currencyCaption": "Currency",
+    "exchangeRateCaption": "Exchange rate",
+    "cardCaption": "Card used"
+  },
+  "cardsScreen": {
+    "title": "Manage cards",
+    "settingsSectionTitle": "Card settings",
+    "securitySectionTitle": "Security options",
+    "aboutSectionTitle": "About",
     "softBlockTitle": "Disable card",
-    "softBlockDescription": "Close your card temporarily",
-    "geoBlockingTitle": "Geographical blocking",
-    "geoBlockingDescription": "Block your card in specific regions",
-    "insurancesTitle": "Insurances",
-    "insurancesDescription": "Learn more about what your insurance covers"
+    "softBlockCaption": "Close your card temporarily",
+    "geoBlockingTitle": "Purchase regions",
+    "geoBlockingCaption": "Block the card in specific regions",
+    "detailsTitle": "Card details",
+    "detailsNameCaption": "Name on card",
+    "detailsCompanyCaption": "Company name",
+    "detailsEmailCaption": "Email address",
+    "blockedCardMessageTitle": "No settings available",
+    "blockedCardMessageCaption": "You can't manage a card that is blocked."
   },
-  "contactUs": {
-    "screenTitle": "Contact us",
-    "customerServiceTitle": "Customer service",
-    "sendMessageTitle": "Send us a message",
-    "faqTitle": "Frequently asked questions",
+  "purchaseRegionsScreen": {
+    "title": "Purchase regions",
+    "allToggleTitle": "All countries",
+    "allToggleCaption": "Enable for in-store purchases and withdraws outside of {{country}}",
+    "alwaysEnabledLabel": "Always enabled",
+    "regionNordics": "Nordic countries",
+    "regionEurope": "Europe",
+    "regionAfrica": "Africa",
+    "regionAsia": "Asia",
+    "regionNorthAmerica": "North America",
+    "regionSouthAmerica": "South America",
+    "regionOceania": "Oceania"
+  },
+  "supportScreen": {
+    "title": "Support",
+    "supportSectionTitle": "Support and questions",
+    "blockSectionTitle": "Block card",
+    "insuranceSectionTitle": "Ongoing insurance matters",
+    "customerServiceOptionTitle": "Personal service",
+    "customerServiceOptionCaption": "Call us, open Mon—Fri 8—17",
+    "messageOptionTitle": "Messages",
+    "messageOptionCaption": "We respond within 24 hours",
+    "faqOptionTitle": "Frequently asked questions",
+    "falckSecureOptionTitle": "Falck Secure",
+    "falckSecureOptionCaption": "In case you have the Falck Secure blocking service",
+    "messageNotificationTitle": "New message!"
+  },
+  "messagesScreen": {
+    "title": "Messages",
+    "newMessageOptionLabel": "Send new message",
+    "newMessageTopicTitle": "What is your message about?",
+    "newMessageTopicInvoice": "Invoice",
+    "newMessageTopicLimit": "Purchase limit",
+    "newMessageTopicReplacement": "Replacement card",
+    "newMessageTopicCancelCard": "Cancel my card",
+    "newMessageTopicOther": "Other issues",
+    "newMessageCardTitle": "Which card is this concerning?",
+    "messageInputPlaceholder": "Type your message here..."
+  },
+  "moreScreen": {
+    "title": "More",
+    "settingsSectionTitle": "Settings",
+    "aboutSectionTitle": "About",
+    "commentSectionTitle": "Comment",
+    "pushNotificationOptionTitle": "Purchase notifications",
+    "pushNotificationOptionCaption": "Notify me when a purchase is made",
+    "languageOptionTitle": "Language",
+    "insuranceOptionTitle": "Insurances",
+    "benefitsOptionTitle": "Benefits",
+    "dataSecurityOptionTitle": "Data and security",
+    "introductionOptionTitle": "Show introduction again",
+    "feedbackOptionTitle": "Give us feedback",
+    "rateUsOptionTitle": "Rate us",
+    "logoutButton": "Log out",
+    "language-sv-SE": "Swedish",
+    "language-sv-FI": "Finland Swedish",
+    "language-fi-FI": "Finnish",
+    "language-da-DK": "Danish",
+    "language-nb-NO": "Norwegian",
+    "language-en": "English"
+  },
+  "options": {
+    "onlinePurchaseTitle": "Online purchases",
+    "onlinePurchaseNotActiveCaption": "Enable for 60 minutes",
+    "onlinePurchaseActiveCaption": "Currently enabled",
+    "pinDisplayTitle": "Show PIN code",
+    "pinDisplayCaption": "Tap to see your card pin",
+    "faceIdTitle": "Enable Face ID",
+    "faceIdCaption": "Unlock the app using Face ID",
+    "touchIdTitle": "Enable Touch ID",
+    "touchIdCaption": "Unlock the app using Touch ID",
+    "applePayTitle": "Activate Apple Pay",
+    "applePayCaption": "Pay with your iPhone in stores",
     "blockCardTitle": "Block card",
-    "blockCardDescription": "Call us, open 24/7"
-  },
-  "more": {
-    "screenTitle": "More",
-    "aboutHeading": "About",
-    "aboutAppTitle": "About the app",
-    "showIntroTitle": "Show introduction again",
-    "logOutButton": "Log out"
+    "blockCardCaption": "Call us, open 24/7"
   },
   "global": {
     "countryDK": "Denmark",
@@ -49,19 +167,28 @@
     "websiteUrl": "https://www.firstcardonline.com/",
     "supportUrl": "https://www.firstcardonline.com/support/",
     "insuranceUrl": "https://www.firstcardonline.com/insurance/",
-    "benefitsUrl": "https://www.firstcardonline.com/features/#offers-and-discounts"
-  },
-  "settings": {
-    "onlinePurchaseTitle": "Online Purchases",
-    "onlinePurchaseDescription": "Enable for 60 minutes",
-    "pinDisplayTitle": "Show PIN code",
-    "pinDisplayDescription": "Tap to see your card pin"
+    "benefitsUrl": "https://www.firstcardonline.com/features/#offers-and-discounts",
+    "shortCardTypeCorporate": "Corporate",
+    "longCardTypeCorporate": "First Card Corporate",
+    "cardDisplayName": "Ends with {{lastDigits}}",
+    "cardBlockedLabel": "Card blocked",
+    "shortCardTypeTravel": "Travel",
+    "longCardTypeTravel": "Travel card",
+    "transactionBadgeUpcoming": "Upcoming",
+    "transactionBadgeReserved": "Reserved",
+    "invoiceBadgePaid": "Paid",
+    "upcomingInvoiceLabel": "Upcoming invoice",
+    "upcomingInvoiceCardHeaderLabel": "Current amount",
+    "upcomingInvoiceCardHeaderCaption": "To be invoiced",
+    "invoiceCardTitle": "Invoice {{number}}",
+    "invoiceCardHeaderLabel": "Total amount",
+    "invoiceCardHeaderCaption": "Invoiced {{date}}"
   },
   "navigation": {
-    "homeTabBarLabel": "Home",
-    "purchasesTabBarLabel": "Purchases",
-    "cardTabBarLabel": "Card",
-    "supportTabBarLabel": "Support",
-    "moreTabBarLabel": "More"
+    "homeTabLabel": "Home",
+    "purchasesTabLabel": "Purchases",
+    "cardsTabLabel": "Cards",
+    "supportTabLabel": "Support",
+    "moreTabLabel": "More"
   }
 }
