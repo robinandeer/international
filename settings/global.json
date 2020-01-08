@@ -8,12 +8,22 @@
     "se": "+46771407170"
   },
   "languages": {
-    "fi": ["fi", "en", "sv-FI"],
-    "se": ["se", "en"]
+    "fi": ["fi-FI", "en", "sv-FI"],
+    "se": ["sv-SE", "en"],
+    "dk": ["da-DK", "en"],
+    "no": ["nb-NO", "en"]
   },
   "activeFeatures": {
     "fi": [
       "CARD_ACTIVATION",
+      "APPLE_PAY",
+      "BIOMETRIC_LOGIN"
+    ],
+    "dk": [
+      "APPLE_PAY",
+      "BIOMETRIC_LOGIN"
+    ],
+    "no": [
       "APPLE_PAY",
       "BIOMETRIC_LOGIN"
     ],
