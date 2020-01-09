@@ -34,5 +34,11 @@
       "APPLE_PAY",
       "BIOMETRIC_LOGIN"
     ]
+  },
+  "forceUpdate": {
+    "required": false,
+    "currentVersion": 1,
+    "appStoreUrl": "https://apps.apple.com/se/app/first-card/id930423049",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=se.nordea.firstcard"
   }
 }
