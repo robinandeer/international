@@ -64,6 +64,7 @@
     "locationCaption": "Purchase location",
     "vatCaption": "VAT amount",
     "currencyCaption": "Currency",
+    "localAmountCaption": "Purchase amount",
     "exchangeRateCaption": "Exchange rate",
     "cardCaption": "Card used"
   },
@@ -190,5 +191,14 @@
     "cardsTabLabel": "Cards",
     "supportTabLabel": "Support",
     "moreTabLabel": "More"
+  },
+  "issueType": {
+    "TERMINATE_CARD": "Terminate card",
+    "CHANGE_CARD_LIMIT": "Change card limit",
+    "INVOICE": "Invoice",
+    "UPDATE_CONTACT_INFO": "Update contact info",
+    "BLOCK_CARD": "Block card",
+    "ORDER_PIN_CODE": "Order pin code",
+    "OTHER": "Other"
   }
 }

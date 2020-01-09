@@ -64,6 +64,7 @@
     "locationCaption": "Köpställe",
     "vatCaption": "Momsbelopp",
     "currencyCaption": "Valuta",
+    "localAmountCaption": "Köpsumma",
     "exchangeRateCaption": "Växlingskurs",
     "cardCaption": "Använt kort"
   },
@@ -190,5 +191,14 @@
     "cardsTabLabel": "Kort",
     "supportTabLabel": "Support",
     "moreTabLabel": "Mera"
+  },
+  "issueType": {
+    "TERMINATE_CARD": "Avsluta kort",
+    "CHANGE_CARD_LIMIT": "Ändra kortgräns",
+    "INVOICE": "Faktura",
+    "UPDATE_CONTACT_INFO": "Ändra kontaktinfo",
+    "BLOCK_CARD": "Blockera kort",
+    "ORDER_PIN_CODE": "Beställ pinkod",
+    "OTHER": "Annat"
   }
 }
