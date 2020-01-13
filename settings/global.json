@@ -32,7 +32,8 @@
       "GEO_BLOCKING",
       "CARD_ACTIVATION",
       "APPLE_PAY",
-      "BIOMETRIC_LOGIN"
+      "BIOMETRIC_LOGIN",
+      "INTERNET_PURCHASES"
     ]
   },
   "forceUpdate": {
