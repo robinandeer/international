@@ -169,6 +169,7 @@
     "supportUrl": "https://www.firstcardonline.com/support/",
     "insuranceUrl": "https://www.firstcardonline.com/insurance/",
     "benefitsUrl": "https://www.firstcardonline.com/features/#offers-and-discounts",
+    "dataSecurityUrl": "https://www.firstcardonline.com/privacy-policy-for-the-first-card-app/",
     "shortCardTypeCorporate": "Corporate",
     "longCardTypeCorporate": "First Card Corporate",
     "cardDisplayName": "Ends with {{lastDigits}}",

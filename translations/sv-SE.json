@@ -169,6 +169,7 @@
     "supportUrl": "https://www.firstcardonline.com/se/support/",
     "insuranceUrl": "https://www.firstcardonline.com/se/formaner/",
     "benefitsUrl": "https://www.firstcardonline.com/se/formanerna-gor-first-card-annu-mer-vardefullt/",
+    "dataSecurityUrl": "https://www.firstcardonline.com/se/behandling-av-personuppgifter/",
     "shortCardTypeCorporate": "Företagkort",
     "longCardTypeCorporate": "First Card Företagkort",
     "cardDisplayName": "Slutar med {{lastDigits}}",
