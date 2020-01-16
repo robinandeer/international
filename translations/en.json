@@ -148,7 +148,7 @@
   "options": {
     "onlinePurchaseTitle": "Online purchases",
     "onlinePurchaseNotActiveCaption": "Enable for 60 minutes",
-    "onlinePurchaseActiveCaption": "Currently enabled",
+    "onlinePurchaseActiveCaption": "Will be automatically disabled in {{minutes}} min",
     "pinDisplayTitle": "Show PIN code",
     "pinDisplayCaption": "Tap to see your card pin",
     "faceIdTitle": "Enable Face ID",

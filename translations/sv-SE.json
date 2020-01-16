@@ -148,7 +148,7 @@
   "options": {
     "onlinePurchaseTitle": "Online-köp",
     "onlinePurchaseNotActiveCaption": "Aktivera i 60 minuter",
-    "onlinePurchaseActiveCaption": "Aktiverad",
+    "onlinePurchaseActiveCaption": "Kommer avaktiveras automatiskt om {{minutes}} minuter",
     "pinDisplayTitle": "Visa PIN-kod",
     "pinDisplayCaption": "Tryck för att sin din PIN-kod",
     "faceIdTitle": "Aktivera Face ID",
