@@ -121,7 +121,8 @@
     "newMessageTopicCancelCard": "Cancel my card",
     "newMessageTopicOther": "Other issues",
     "newMessageCardTitle": "Which card is this concerning?",
-    "messageInputPlaceholder": "Type your message here..."
+    "messageInputPlaceholder": "Type your message here...",
+    "initialStaffResponse": "Thanks! We will respond within 24 hours"
   },
   "moreScreen": {
     "title": "More",

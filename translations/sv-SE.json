@@ -121,7 +121,8 @@
     "newMessageTopicCancelCard": "Avbeställ mitt kort",
     "newMessageTopicOther": "Andra problem",
     "newMessageCardTitle": "Vilket kort gäller det?",
-    "messageInputPlaceholder": "Skriv ditt meddelande här..."
+    "messageInputPlaceholder": "Skriv ditt meddelande här...",
+    "initialStaffResponse": "Tack! Vi svarar dig inom 24 timmar"
   },
   "moreScreen": {
     "title": "Mer",
